@@ -1,5 +1,6 @@
 # Trading Trainer
 Offering a comprehensive platform for honing and developing day trading skills in a risk-free environment.
+
 ---
 
 ## Description
