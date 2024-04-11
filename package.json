@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "finnhub": "^1.2.18",
     "ws": "^8.16.0"
   }
 }
