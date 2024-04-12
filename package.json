@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "apexcharts": "^3.48.0",
     "ws": "^8.16.0"
   }
 }
