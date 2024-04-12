@@ -5,6 +5,12 @@
       "name": "Manuel",
       "email": "manuel.gross3004@gmail.com",
       "password": "asd"
+    },
+    {
+      "id": "8bd7",
+      "name": "test",
+      "email": "test@mail.com",
+      "password": "test"
     }
   ]
 }
