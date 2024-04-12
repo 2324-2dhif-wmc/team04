@@ -12,7 +12,11 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "apexcharts": "^3.48.0",
+=======
+    "finnhub": "^1.2.18",
+>>>>>>> c5c851d90b17b6c3ece2cec11f753aab4a3dff40
     "ws": "^8.16.0"
   }
 }
