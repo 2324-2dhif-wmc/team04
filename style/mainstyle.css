@@ -8,3 +8,37 @@ body {
     max-width: 650px;
     margin: 35px auto;
 }
+
+.homeHeader{
+    text-align: center;
+    padding: 2%;
+    background-color: black;
+    font-size: xx-large;
+    color: white;
+}
+ .navbar{
+     color: white;
+     font-size: large;
+ }
+ .navbar:hover{
+     color: darkgray;
+     text-decoration: none;
+ }
+
+ .container{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     margin-top: 10%;
+     width: 35%;
+ }
+
+
+ .login{
+     background-color: black;
+     margin: 0;
+     background-size: cover;
+ }
+.black-bg {
+    background-color: black !important;
+}
