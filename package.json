@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@polygon.io/client-js": "^7.3.2",
     "apexcharts": "^3.48.0",
     "finnhub": "^1.2.18",
     "ws": "^8.16.0"
