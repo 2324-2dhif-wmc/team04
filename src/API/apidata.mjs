@@ -4,16 +4,26 @@ const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
 import finnhub from 'finnhub';
 
 
-
-export function getThreeMonthRange(symbol, from, to) {
-    const cValues = [];
-    rest.stocks.aggregates(symbol, 1, "day", from, to).then((data) => {
+export function getThreeMonthRange(symbol, callback) {
+    var cValues = [];
+    rest.stocks.aggregates(symbol, 1, "day", "2023-01-01", "2023-03-01").then((data) => {
         for(let i = 0; i < data.results.length; i++) {
             cValues.push(data.results[i].c);
         }
+        callback(null, cValues);
     });
-    return [cValues, from, to]
 }
+
+const startDate = "2023-01-01";
+const endDate = "2023-03-01";
+
+getThreeMonthRange('AAPL', (error, stock) => {
+    if (error) {
+        console.error('Error:', error);
+    } else {
+        console.log('Received stock:', stock);
+    }
+});
 
 export function generateDateRangeArray(startDate, endDate) {
     const dateArray = [];
@@ -23,9 +33,9 @@ export function generateDateRangeArray(startDate, endDate) {
         dateArray.push(currentDate.toISOString().slice(0, 10));
         currentDate.setDate(currentDate.getDate() + 1);
     }
-
     return dateArray;
 }
+
 
 export function getQuote(symbol, callback) {
 
@@ -51,6 +61,3 @@ export function getQuote(symbol, callback) {
     });
 }
 
-
-const startDate = "2023-01-01";
-const endDate = "2023-03-01";
