@@ -1,17 +1,14 @@
-import * as d3 from 'https://cdn.skypack.dev/d3'; // Einbinden von D3.js
-import {dataArr} from "./dataManipulation.mjs";
+import * as d3 from "https://cdn.skypack.dev/d3"; // Einbinden von D3.js
 
 // Laden der generierten Daten
-const data = dataArr;
-
-console.log(data);
+const data = generateRandomData(5); // Hier kannst du die Anzahl der Datenpunkte ändern
 
 // Größe des Diagramms
 const width = 400;
 const height = 300;
 
 // Erstellen einer D3.js-Auswahl für das Diagrammcontainer-Element
-const svg = d3.select("#chart")
+const svg = d3.select("#chart-container")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
