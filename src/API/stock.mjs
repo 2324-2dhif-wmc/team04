@@ -11,20 +11,16 @@ export class Stock
 }
 
 
-
-const Market= Object.freeze({
-    NYSE: '1',
-    AMEX: '2',
-    Nasdaq: '3'
-});
-
-function getColorName(num)
+export class News
 {
-    for (const name in Market) {
-        if (Market[name] === num) {
-            return name;
-        }
+    constructor(symbol, time, headline, img, src, summary, url)
+    {
+        this.symbol = symbol;
+        this.time = time;
+        this.headline = headline;
+        this.img = img;
+        this.src = src;
+        this.summary = summary;
+        this.url = url;
     }
-    return null;
 }
-

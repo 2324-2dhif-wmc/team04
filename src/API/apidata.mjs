@@ -1,8 +1,39 @@
 import { restClient } from '@polygon.io/client-js';
 import {Stock} from "./stock.mjs";
+import {News} from "./stock.mjs";
+
 const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
 import finnhub from 'finnhub';
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
+const finnhubClient = new finnhub.DefaultApi();
 
+const today = new Date();
+
+function getDateString(date)
+{
+    return `${date.getFullYear}${date.getMonth() + 1}}-${date.getDate()}`;
+}
+
+export function getStockNews(symbol, callback)
+{
+    let news;
+    let beginning = new Date();
+    beginning.setMonth(today.getMonth()-3);
+    finnhubClient.companyNewsCallback((error, data, response) =>
+    {
+        if(error)
+        {
+            callback(error, null);
+        } else if(data) {
+            news = new News(symbol, data.datetime, data.headline, data.img, data.src, data.summary, data.url);
+            callback(null, news);
+        }
+        else {
+            return callback(null, null);
+        }
+    });
+}
 
 export function getThreeMonthRange(symbol, callback) {
     var cValues = [];
@@ -14,16 +45,6 @@ export function getThreeMonthRange(symbol, callback) {
     });
 }
 
-const startDate = "2023-01-01";
-const endDate = "2023-03-01";
-
-getThreeMonthRange('AAPL', (error, stock) => {
-    if (error) {
-        console.error('Error:', error);
-    } else {
-        console.log('Received stock:', stock);
-    }
-});
 
 export function generateDateRangeArray(startDate, endDate) {
     const dateArray = [];
