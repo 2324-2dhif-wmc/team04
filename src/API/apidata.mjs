@@ -1,42 +1,43 @@
-import { restClient } from '@polygon.io/client-js';
-import {Stock} from "./stock.mjs";
-import {News} from "./stock.mjs";
+import {restClient} from '@polygon.io/client-js';
+import {News, Stock} from "./stock.mjs";
+import finnhub from 'finnhub';
 
 const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
-import finnhub from 'finnhub';
 const api_key = finnhub.ApiClient.instance.authentications['api_key'];
 api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
 const finnhubClient = new finnhub.DefaultApi();
 
-const today = new Date();
 
 function getDateString(date)
 {
-    return `${date.getFullYear}${date.getMonth() + 1}}-${date.getDate()}`;
+    let month = ("00" + (date.getMonth() + 1)).slice(-2);
+    let day = ("00" + date.getDate()).slice(-2);
+    return `${date.getFullYear()}-${month}-${day}`;
 }
 
 export function getStockNews(symbol, callback)
 {
-    let news;
     let beginning = new Date();
-    beginning.setMonth(today.getMonth()-3);
-    finnhubClient.companyNewsCallback((error, data, response) =>
+    beginning.setDate(beginning.getDate() - 1);
+
+    const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
+
+    const url = `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${getDateString(beginning).toString()}&to=${getDateString(new Date())}&token=${apiKey}`
+    fetch(url)
+    .then(response => response.json())
+    .then(data =>
     {
-        if(error)
-        {
-            callback(error, null);
-        } else if(data) {
-            news = new News(symbol, data.datetime, data.headline, data.img, data.src, data.summary, data.url);
-            callback(null, news);
-        }
-        else {
-            return callback(null, null);
-        }
+        console.log(data);
+        let news =  new News(symbol, data.datetime, data.headline, data.image, data.source, data.summary, data.url);
+        callback(null, news);
+    })
+    .catch(error => {
+        callback(error, null);
     });
 }
 
 export function getThreeMonthRange(symbol, callback) {
-    var cValues = [];
+    let cValues = [];
     rest.stocks.aggregates(symbol, 1, "day", "2023-01-01", "2023-03-01").then((data) => {
         for(let i = 0; i < data.results.length; i++) {
             cValues.push(data.results[i].c);
@@ -81,4 +82,3 @@ export function getQuote(symbol, callback) {
         }
     });
 }
-
