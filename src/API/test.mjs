@@ -1,4 +1,4 @@
-import {getQuote, getThreeMonthRange} from "./apidata.mjs";
+import {getQuote, getStockNews, getThreeMonthRange} from "./apidata.mjs";
 
 /*
 getQuote('AAPL', (error, stock) => {
@@ -8,18 +8,19 @@ getQuote('AAPL', (error, stock) => {
         console.log('Received stock:', stock);
     }
 });
-
-getStockNews('AAPL', (error, news) => {
-    if (error) {
-        console.error('Error:', error);
-    }
-    else {
-        console.log('Received news:', news);
-    }
-})
-
 */
 
+getStockNews('AAPL', (error, data) =>
+{
+    if(error)
+    {
+        console.log(error);
+    } else {
+        console.log('Received news:', data);
+    }
+});
+
+/*
 const startDate = "2023-01-01";
 const endDate = "2023-03-01";
 
@@ -29,4 +30,4 @@ getThreeMonthRange('AAPL', (error, stock) => {
     } else {
         console.log('Received stock:', stock);
     }
-});
+});*/
