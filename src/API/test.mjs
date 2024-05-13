@@ -1,33 +1,42 @@
 import {getQuote, getStockNews, getThreeMonthRange} from "./apidata.mjs";
 
-/*
-getQuote('AAPL', (error, stock) => {
-    if (error) {
-        console.error('Error:', error);
-    } else {
-        console.log('Received stock:', stock);
-    }
-});
-*/
+quote();
 
-getStockNews('AAPL', (error, data) =>
-{
-    if(error)
+
+
+function quote() {
+    getQuote('AAPL', (error, stock) => {
+        if (error) {
+            console.error('Error:', error);
+        } else {
+            console.log('Received stock:', stock);
+        }
+    });
+}
+
+function news() {
+    getStockNews('AAPL', (error, data) =>
     {
-        console.log(error);
-    } else {
-        console.log('Received news:', data);
-    }
-});
+        if(error)
+        {
+            console.log(error);
+        } else {
+            console.log('Received news:', data);
+        }
+    });
+}
 
-/*
-const startDate = "2023-01-01";
-const endDate = "2023-03-01";
+function monthRange()
+{
+    const startDate = "2023-01-01";
+    const endDate = "2023-03-01";
 
-getThreeMonthRange('AAPL', (error, stock) => {
-    if (error) {
-        console.error('Error:', error);
-    } else {
-        console.log('Received stock:', stock);
-    }
-});*/
+    getThreeMonthRange('AAPL', (error, stock) => {
+        if (error) {
+            console.error('Error:', error);
+        } else {
+            console.log('Received stock:', stock);
+        }
+    });
+}
+

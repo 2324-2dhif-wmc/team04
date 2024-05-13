@@ -1,11 +1,12 @@
 export class Stock
 {
-    constructor(symbol, currentStock, tradeSize, market, timestamp)
+    constructor(symbol, currentStock, highPrice, lowPrice, openPrice, timestamp)
     {
         this.symbol = symbol;
         this.currentStock = currentStock;
-        this.tradeSize = tradeSize;
-        this.market = market;
+        this.highPrice = highPrice;
+        this.lowPrice = lowPrice;
+        this.openPrice = openPrice;
         this.time = timestamp;
     }
 }

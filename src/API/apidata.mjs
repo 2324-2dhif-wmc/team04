@@ -76,8 +76,9 @@ export function getQuote(symbol, callback) {
                 data.h, // Höchster Preis des Tages
                 data.l, // Niedrigster Preis des Tages
                 data.o, // Eröffnungspreis
-                data.pc // Vorheriger Schlusskurs
+                data.t // time
             );
+            console.log(data);
             callback(null, stock);
         }
     });
