@@ -1,35 +1,52 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-        event.preventDefault(); // Verhindert das Standardverhalten des Formulars (das Absenden)
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector('form');
 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
         const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-        console.log('Username:', username);
-        console.log('Password:', password);
+        // Benutzerdaten
+        const userData = {
+            email: email,
+            password: password
+        };
 
-        const loggedIn = await checkUserCredentials(username,email, password);
-        if (loggedIn) {
-            console.log('Anmeldung erfolgreich');
-        } else {
-            console.log('Anmeldung fehlgeschlagen');
-        }
+        // Überprüfung des Benutzers
+        checkUser(userData);
     });
-});
-async function checkUserCredentials(username, email, password) {
-    try {
-        const response = await fetch(`http://localhost:3000/users?name=${username}&email=${email}&password=${password}`);
-        const users = await response.json();
 
-        if (users.length > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    } catch (error) {
-        console.error('Fehler bei der Überprüfung der Benutzerdaten:', error);
-        return false;
+    function checkUser(data) {
+        const serverUrl = 'http://localhost:3000/users';
+
+        fetch(`${serverUrl}?email=${data.email}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(users => {
+                const user = users[0];
+                if (!user) {
+                    console.log('Benutzer existiert nicht');
+                    return;
+                }
+                if (user.password !== data.password) {
+                    console.log('Falsches Passwort');
+                    return;
+                }
+                alert('Erfolgreich eingeloggt');
+                window.location.href = '../content/mainpage.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
-}
-
+});
