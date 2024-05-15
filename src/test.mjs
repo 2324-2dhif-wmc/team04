@@ -1,7 +1,12 @@
 import {getQuote, getStockNews, getThreeMonthRange} from "./API/apidata.mjs";
+import {addStock} from "./ServerClient/serverClient.mjs";
+import {User} from "./model.mjs";
 
-quote();
+let user = new User("1234", "test@gmail.com", "test");
+let s = null;
+user.addStock(s);
 
+addStock(user);
 
 function quote() {
     getQuote('AAPL', (error, stock) => {
@@ -9,6 +14,7 @@ function quote() {
             console.error('Error:', error);
         } else {
             console.log('Received stock:', stock);
+            s = stock;
         }
     });
 }
