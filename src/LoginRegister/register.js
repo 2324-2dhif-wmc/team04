@@ -4,11 +4,7 @@ function checkIfUserExists(email) {
     return fetch(`${serverUrl}?email=${email}`)
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
-                return true; // Benutzer existiert bereits
-            } else {
-                return false; // Benutzer existiert nicht
-            }
+            return data.length > 0;
         })
         .catch(error => {
             console.error('Error:', error);

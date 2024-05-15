@@ -1,9 +1,9 @@
 import {getQuote, getStockNews, getThreeMonthRange} from "./API/apidata.mjs";
 import {addStock} from "./ServerClient/serverClient.mjs";
-import {User} from "./model.mjs";
+import { User, Stock } from "./model.mjs";
 
 let user = new User("1234", "test@gmail.com", "test");
-let s = null;
+let s = new Stock("AAPL", 100, 100,100, 100, 1234567876);
 user.addStock(s);
 
 addStock(user);
