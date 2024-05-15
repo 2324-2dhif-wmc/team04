@@ -1,5 +1,5 @@
 import {restClient} from '@polygon.io/client-js';
-import {News, Stock} from "./stock.mjs";
+import {News, Stock} from "../model.mjs";
 import finnhub from 'finnhub';
 
 const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');

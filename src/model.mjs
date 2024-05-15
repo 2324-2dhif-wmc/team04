@@ -25,3 +25,27 @@ export class News
         this.url = url;
     }
 }
+
+export class Customer
+{
+    constructor(id) {
+        this.id = id;
+        this.money = 0;
+        this.stocks = [];
+    }
+
+    addStock(stock)
+    {
+        if(stock)
+        {
+            this.stocks.push(stock);
+            return true;
+        }
+        return false;
+    }
+
+    deleteStock(symbol)
+    {
+        return this.stocks.filter(s => s.symbol === symbol);
+    }
+}

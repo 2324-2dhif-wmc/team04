@@ -28,7 +28,7 @@ Trading Trainer aspires to become a leading platform for trading education, wide
 1. **Virtual Capital:**
    - Users can engage in trading with virtual funds to enhance their skills without financial risk.
 
-2. **Live Stock Market Prices:**
+2. **Live Model Market Prices:**
    - Integration of an API for real-time market data to simulate actual trading conditions.
 
 3. **Risk Management:**
