@@ -46,7 +46,7 @@ export class User
         return false;
     }
 
-    deleteStock(symbol)
+    removeStock(symbol)
     {
         return this.stocks.filter(s => s.symbol === symbol);
     }

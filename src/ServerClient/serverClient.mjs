@@ -1,8 +1,6 @@
-import {Stock, User} from "../model.mjs";
-
 const serverUrl = 'http://localhost:3000/users';
 
-export function addStock(user) {
+export function updateUser(user) {
     fetch(`${serverUrl}/${user.id}`, {
         method: 'PUT',
         headers: {
