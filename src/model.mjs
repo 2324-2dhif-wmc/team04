@@ -28,10 +28,11 @@ export class News
 
 export class User
 {
-    constructor(id, email, password) {
+    constructor(id, email, password, name) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.name = name;
         this.money = 0;
         this.stocks = [];
     }
