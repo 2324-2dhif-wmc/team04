@@ -27,13 +27,13 @@ export class News
 
 export class User
 {
-    constructor(id, email, password, name) {
+    constructor(id, email, password, name, money, stocks) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
-        this.money = 0;
-        this.stocks = [];
+        this.money = money;
+        this.stocks = stocks;
     }
 
     addStock(stock)

@@ -35,9 +35,9 @@ export function getUser(email, callback)
                 return;
             }
 
-            let us =  new User(user.id, user.email, user.password);
+            let us =  new User(user.id, user.email, user.password, user.name, user.money, user.stocks);
 
-            callback(user, null);
+            callback(us, null);
 
         })
         .catch(error => {callback(null, error);});
