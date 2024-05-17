@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Market</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+    <script src="assets/js/teamCode/marketTable.js" defer type = "module"></script>
 </head>
 <body>
+<h1>Stock List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody id="stocks-table-body">
+    <!-- Table rows will be inserted here -->
+    </tbody>
+</table>
+
+<!-- Externe JavaScript-Datei einbinden -->
 
 </body>
 </html>

@@ -99,3 +99,5 @@ export function getQuote(symbol, callback) {
     });
 
 }
+
+getQuote("AAPL", (error, stock));
