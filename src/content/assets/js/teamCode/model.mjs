@@ -11,7 +11,6 @@ export class Stock
     }
 }
 
-
 export class News
 {
     constructor(symbol, time, headline, img, src, summary, url)
@@ -28,13 +27,22 @@ export class News
 
 export class User
 {
+<<<<<<< HEAD:src/model.mjs
     constructor(id, email, password, name) {
+=======
+    constructor(id, email, password, name, money, stocks) {
+>>>>>>> 5f8c82c46c3a8a2523c3a0ffa32207815d96f400:src/content/assets/js/teamCode/model.mjs
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
+<<<<<<< HEAD:src/model.mjs
         this.money = 0;
         this.stocks = [];
+=======
+        this.money = money;
+        this.stocks = stocks;
+>>>>>>> 5f8c82c46c3a8a2523c3a0ffa32207815d96f400:src/content/assets/js/teamCode/model.mjs
     }
 
     addStock(stock)

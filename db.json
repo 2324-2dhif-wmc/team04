@@ -10,6 +10,7 @@
       "id": "1234",
       "email": "test@gmail.com",
       "password": "test",
+      "name": "test",
       "money": 50000,
       "stocks": [
         {

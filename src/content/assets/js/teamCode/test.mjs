@@ -1,13 +1,30 @@
 import {getQuote, getStockNews, getThreeMonthRange} from "./API/apidata.mjs";
-import {updateUser} from "./ServerClient/serverClient.mjs";
+import {updateUser, getUser} from "./ServerClient/serverClient.mjs";
 import { User, Stock } from "./model.mjs";
 
+/*
 let user = new User("1234", "test@gmail.com", "test");
 let s = new Stock("AAPL", 100, 100,100, 100, 1234567876);
 user.addStock(s);
 user.money = 50000;
 
 updateUser(user);
+ */
+
+getUser("test@gmail.com", (us, error) => {
+    if(error)
+    {
+        console.log(error);
+    }
+    else
+    {
+        console.log(us);
+    }
+});
+
+
+
+news();
 
 function quote() {
     getQuote('AAPL', (error, stock) => {

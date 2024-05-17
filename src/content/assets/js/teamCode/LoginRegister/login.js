@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     return;
                 }
                 alert('Erfolgreich eingeloggt');
-                window.location.href = '../content/mainpage.html';
+                window.location.href = '../../../../mainpage.html';
             })
             .catch(error => {
                 console.error('Error:', error);
