@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                window.location.href = '../content/loginpage.html';
+                window.location.href = '../../../../loginpage.html';
             })
             .catch((error) => {
                 console.error('Error:', error);
