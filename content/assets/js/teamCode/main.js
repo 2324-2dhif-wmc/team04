@@ -1,6 +1,6 @@
 import {User} from "./model.mjs";
+import {getUser} from "./ServerClient/serverClient.mjs";
 
-let y = new User()
 
 let x = document.getElementById("Account");
 x.innerText = "Michi";

@@ -59,7 +59,7 @@ export function getStockName(symbol, callback)
             return response.json();
         })
         .then(data => {
-            callback(null, data.name);
+            callback(null, data[0].name);
         })
         .catch(error => {callback(error, null);});
 }
