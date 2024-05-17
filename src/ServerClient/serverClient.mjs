@@ -1,9 +1,10 @@
 import {Stock, User} from "../model.mjs";
 
-const serverUrl = 'http://localhost:3000/users';
+const userUrl = 'http://localhost:3000/users';
+const stockUrl = 'http://localhost:3000/stocks';
 
 export function updateUser(user) {
-    fetch(`${serverUrl}/${user.id}`, {
+    fetch(`${userUrl}/${user.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -16,7 +17,7 @@ export function updateUser(user) {
 
 export function getUser(email, callback)
 {
-    fetch(`${serverUrl}?email=${email}`, {
+    fetch(`${userUrl}?email=${email}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -37,8 +38,28 @@ export function getUser(email, callback)
 
             let us =  new User(user.id, user.email, user.password, user.name, user.money, user.stocks);
 
-            callback(us, null);
+            callback(null, us);
 
         })
-        .catch(error => {callback(null, error);});
+        .catch(error => {callback(error, null);});
+}
+
+export function getStockName(symbol, callback)
+{
+    fetch(`${stockUrl}?symbol=${symbol}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            callback(null, data.name);
+        })
+        .catch(error => {callback(error, null);});
 }

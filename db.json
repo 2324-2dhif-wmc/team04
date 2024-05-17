@@ -23,5 +23,475 @@
         }
       ]
     }
+  ],
+  "stocks": [
+    {
+      "name": "Apple Inc.",
+      "symbol": "AAPL"
+    },
+    {
+      "name": "Microsoft Corporation",
+      "symbol": "MSFT"
+    },
+    {
+      "name": "Amazon.com Inc.",
+      "symbol": "AMZN"
+    },
+    {
+      "name": "Alphabet Inc. (Class A)",
+      "symbol": "GOOGL"
+    },
+    {
+      "name": "Alphabet Inc. (Class C)",
+      "symbol": "GOOG"
+    },
+    {
+      "name": "Meta Platforms Inc.",
+      "symbol": "META"
+    },
+    {
+      "name": "Tesla, Inc.",
+      "symbol": "TSLA"
+    },
+    {
+      "name": "NVIDIA Corporation",
+      "symbol": "NVDA"
+    },
+    {
+      "name": "Berkshire Hathaway Inc.",
+      "symbol": "BRK.A"
+    },
+    {
+      "name": "Visa Inc.",
+      "symbol": "V"
+    },
+    {
+      "name": "JPMorgan Chase & Co.",
+      "symbol": "JPM"
+    },
+    {
+      "name": "Procter & Gamble Co.",
+      "symbol": "PG"
+    },
+    {
+      "name": "Johnson & Johnson",
+      "symbol": "JNJ"
+    },
+    {
+      "name": "UnitedHealth Group Incorporated",
+      "symbol": "UNH"
+    },
+    {
+      "name": "Mastercard Incorporated",
+      "symbol": "MA"
+    },
+    {
+      "name": "The Home Depot, Inc.",
+      "symbol": "HD"
+    },
+    {
+      "name": "Exxon Mobil Corporation",
+      "symbol": "XOM"
+    },
+    {
+      "name": "Chevron Corporation",
+      "symbol": "CVX"
+    },
+    {
+      "name": "The Walt Disney Company",
+      "symbol": "DIS"
+    },
+    {
+      "name": "Pfizer Inc.",
+      "symbol": "PFE"
+    },
+    {
+      "name": "Intel Corporation",
+      "symbol": "INTC"
+    },
+    {
+      "name": "PepsiCo, Inc.",
+      "symbol": "PEP"
+    },
+    {
+      "name": "Bank of America Corporation",
+      "symbol": "BAC"
+    },
+    {
+      "name": "Cisco Systems, Inc.",
+      "symbol": "CSCO"
+    },
+    {
+      "name": "Verizon Communications Inc.",
+      "symbol": "VZ"
+    },
+    {
+      "name": "Coca-Cola Company",
+      "symbol": "KO"
+    },
+    {
+      "name": "AbbVie Inc.",
+      "symbol": "ABBV"
+    },
+    {
+      "name": "Merck & Co., Inc.",
+      "symbol": "MRK"
+    },
+    {
+      "name": "Eli Lilly and Company",
+      "symbol": "LLY"
+    },
+    {
+      "name": "Broadcom Inc.",
+      "symbol": "AVGO"
+    },
+    {
+      "name": "T-Mobile US, Inc.",
+      "symbol": "TMUS"
+    },
+    {
+      "name": "Comcast Corporation",
+      "symbol": "CMCSA"
+    },
+    {
+      "name": "AT&T Inc.",
+      "symbol": "T"
+    },
+    {
+      "name": "Home Depot Inc.",
+      "symbol": "HD"
+    },
+    {
+      "name": "Oracle Corporation",
+      "symbol": "ORCL"
+    },
+    {
+      "name": "Salesforce, Inc.",
+      "symbol": "CRM"
+    },
+    {
+      "name": "Adobe Inc.",
+      "symbol": "ADBE"
+    },
+    {
+      "name": "Netflix, Inc.",
+      "symbol": "NFLX"
+    },
+    {
+      "name": "PayPal Holdings, Inc.",
+      "symbol": "PYPL"
+    },
+    {
+      "name": "The Boeing Company",
+      "symbol": "BA"
+    },
+    {
+      "name": "IBM Corporation",
+      "symbol": "IBM"
+    },
+    {
+      "name": "Texas Instruments Incorporated",
+      "symbol": "TXN"
+    },
+    {
+      "name": "Advanced Micro Devices, Inc.",
+      "symbol": "AMD"
+    },
+    {
+      "name": "Qualcomm Incorporated",
+      "symbol": "QCOM"
+    },
+    {
+      "name": "NXP Semiconductors N.V.",
+      "symbol": "NXPI"
+    },
+    {
+      "name": "Micron Technology, Inc.",
+      "symbol": "MU"
+    },
+    {
+      "name": "eBay Inc.",
+      "symbol": "EBAY"
+    },
+    {
+      "name": "Zoom Video Communications, Inc.",
+      "symbol": "ZM"
+    },
+    {
+      "name": "Snowflake Inc.",
+      "symbol": "SNOW"
+    },
+    {
+      "name": "Shopify Inc.",
+      "symbol": "SHOP"
+    },
+    {
+      "name": "Square, Inc.",
+      "symbol": "SQ"
+    },
+    {
+      "name": "Spotify Technology S.A.",
+      "symbol": "SPOT"
+    },
+    {
+      "name": "Twilio Inc.",
+      "symbol": "TWLO"
+    },
+    {
+      "name": "Uber Technologies, Inc.",
+      "symbol": "UBER"
+    },
+    {
+      "name": "Lyft, Inc.",
+      "symbol": "LYFT"
+    },
+    {
+      "name": "Pinterest, Inc.",
+      "symbol": "PINS"
+    },
+    {
+      "name": "Snap Inc.",
+      "symbol": "SNAP"
+    },
+    {
+      "name": "Peloton Interactive, Inc.",
+      "symbol": "PTON"
+    },
+    {
+      "name": "Roku, Inc.",
+      "symbol": "ROKU"
+    },
+    {
+      "name": "DoorDash, Inc.",
+      "symbol": "DASH"
+    },
+    {
+      "name": "Airbnb, Inc.",
+      "symbol": "ABNB"
+    },
+    {
+      "name": "Palantir Technologies Inc.",
+      "symbol": "PLTR"
+    },
+    {
+      "name": "Coinbase Global, Inc.",
+      "symbol": "COIN"
+    },
+    {
+      "name": "Robinhood Markets, Inc.",
+      "symbol": "HOOD"
+    },
+    {
+      "name": "DraftKings Inc.",
+      "symbol": "DKNG"
+    },
+    {
+      "name": "Zillow Group, Inc.",
+      "symbol": "Z"
+    },
+    {
+      "name": "Redfin Corporation",
+      "symbol": "RDFN"
+    },
+    {
+      "name": "Opendoor Technologies Inc.",
+      "symbol": "OPEN"
+    },
+    {
+      "name": "Lemonade, Inc.",
+      "symbol": "LMND"
+    },
+    {
+      "name": "SoFi Technologies, Inc.",
+      "symbol": "SOFI"
+    },
+    {
+      "name": "Upstart Holdings, Inc.",
+      "symbol": "UPST"
+    },
+    {
+      "name": "Affirm Holdings, Inc.",
+      "symbol": "AFRM"
+    },
+    {
+      "name": "Bill.com Holdings, Inc.",
+      "symbol": "BILL"
+    },
+    {
+      "name": "Marvell Technology, Inc.",
+      "symbol": "MRVL"
+    },
+    {
+      "name": "Skyworks Solutions, Inc.",
+      "symbol": "SWKS"
+    },
+    {
+      "name": "Applied Materials, Inc.",
+      "symbol": "AMAT"
+    },
+    {
+      "name": "Lam Research Corporation",
+      "symbol": "LRCX"
+    },
+    {
+      "name": "KLA Corporation",
+      "symbol": "KLAC"
+    },
+    {
+      "name": "ASML Holding N.V.",
+      "symbol": "ASML"
+    },
+    {
+      "name": "Analog Devices, Inc.",
+      "symbol": "ADI"
+    },
+    {
+      "name": "Maxim Integrated Products, Inc.",
+      "symbol": "MXIM"
+    },
+    {
+      "name": "Inphi Corporation",
+      "symbol": "IPHI"
+    },
+    {
+      "name": "Cirrus Logic, Inc.",
+      "symbol": "CRUS"
+    },
+    {
+      "name": "Monolithic Power Systems, Inc.",
+      "symbol": "MPWR"
+    },
+    {
+      "name": "Align Technology, Inc.",
+      "symbol": "ALGN"
+    },
+    {
+      "name": "Illumina, Inc.",
+      "symbol": "ILMN"
+    },
+    {
+      "name": "Exact Sciences Corporation",
+      "symbol": "EXAS"
+    },
+    {
+      "name": "Moderna, Inc.",
+      "symbol": "MRNA"
+    },
+    {
+      "name": "BioNTech SE",
+      "symbol": "BNTX"
+    },
+    {
+      "name": "Novavax, Inc.",
+      "symbol": "NVAX"
+    },
+    {
+      "name": "Gilead Sciences, Inc.",
+      "symbol": "GILD"
+    },
+    {
+      "name": "Amgen Inc.",
+      "symbol": "AMGN"
+    },
+    {
+      "name": "Biogen Inc.",
+      "symbol": "BIIB"
+    },
+    {
+      "name": "Regeneron Pharmaceuticals, Inc.",
+      "symbol": "REGN"
+    },
+    {
+      "name": "Vertex Pharmaceuticals Incorporated",
+      "symbol": "VRTX"
+    },
+    {
+      "name": "Seagen Inc.",
+      "symbol": "SGEN"
+    },
+    {
+      "name": "Incyte Corporation",
+      "symbol": "INCY"
+    },
+    {
+      "name": "Alnylam Pharmaceuticals, Inc.",
+      "symbol": "ALNY"
+    },
+    {
+      "name": "Sarepta Therapeutics, Inc.",
+      "symbol": "SRPT"
+    },
+    {
+      "name": "bluebird bio, Inc.",
+      "symbol": "BLUE"
+    },
+    {
+      "name": "CRISPR Therapeutics AG",
+      "symbol": "CRSP"
+    },
+    {
+      "name": "Editas Medicine, Inc.",
+      "symbol": "EDIT"
+    },
+    {
+      "name": "Intellia Therapeutics, Inc.",
+      "symbol": "NTLA"
+    },
+    {
+      "name": "Beam Therapeutics Inc.",
+      "symbol": "BEAM"
+    },
+    {
+      "name": "Caribou Biosciences, Inc.",
+      "symbol": "CRBU"
+    },
+    {
+      "name": "Cellectis S.A.",
+      "symbol": "CLLS"
+    },
+    {
+      "name": "Precision BioSciences, Inc.",
+      "symbol": "DTIL"
+    },
+    {
+      "name": "Verve Therapeutics, Inc.",
+      "symbol": "VERV"
+    },
+    {
+      "name": "Graphite Bio, Inc.",
+      "symbol": "GRPH"
+    },
+    {
+      "name": "Allogene Therapeutics, Inc.",
+      "symbol": "ALLO"
+    },
+    {
+      "name": "Fate Therapeutics, Inc.",
+      "symbol": "FATE"
+    },
+    {
+      "name": "Century Therapeutics, Inc.",
+      "symbol": "IPSC"
+    },
+    {
+      "name": "Poseida Therapeutics, Inc.",
+      "symbol": "PSTX"
+    },
+    {
+      "name": "Protagonist Therapeutics, Inc.",
+      "symbol": "PTGX"
+    },
+    {
+      "name": "Global Blood Therapeutics, Inc.",
+      "symbol": "GBT"
+    },
+    {
+      "name": "Kiniksa Pharmaceuticals, Ltd.",
+      "symbol": "KNSA"
+    },
+    {
+      "name": "Principia Biopharma Inc.",
+      "symbol": "PRNB"
+    }
   ]
 }

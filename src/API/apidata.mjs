@@ -64,9 +64,24 @@ export function getQuote(symbol, callback) {
     const api_key = finnhub.ApiClient.instance.authentications['api_key'];
     api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
     const finnhubClient = new finnhub.DefaultApi();
+    const key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
+
+    /*
+    const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let quote = new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
+
+            callback(null, quote);
+        })
+        .catch(error => {callback(error, null);});
+        */
 
 
-    finnhubClient.quote(symbol, (error, data, response) => {
+
+    finnhubClient.quote('AAPL', (error, data, response) => {
         if (error) {
             callback(error, null);
         } else {
@@ -82,4 +97,5 @@ export function getQuote(symbol, callback) {
             callback(null, stock);
         }
     });
+
 }
