@@ -1,4 +1,4 @@
-import {restClient} from '/@polygon.io/client-js';
+import {restClient} from '@polygon.io/client-js';
 import {News, Stock} from "../model.mjs";
 import finnhub from '../../../../../node_modules/finnhub/dist/index.js';
 
@@ -99,5 +99,3 @@ export function getQuote(symbol, callback) {
     });
 
 }
-
-getQuote("AAPL", (error, stock));
