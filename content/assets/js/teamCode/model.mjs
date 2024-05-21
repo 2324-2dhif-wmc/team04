@@ -2,29 +2,15 @@ import {getStockName} from "./ServerClient/serverClient.mjs";
 
 export class Stock
 {
-    constructor(symbol, currentStock, highPrice, lowPrice, openPrice, timestamp)
+    constructor(symbol, name, currentStock, highPrice, lowPrice, openPrice, timestamp)
     {
         this.symbol = symbol;
+        this.name = name;
         this.currentStock = currentStock;
         this.highPrice = highPrice;
         this.lowPrice = lowPrice;
         this.openPrice = openPrice;
         this.time = timestamp;
-    }
-
-    getName()
-    {
-        getStockName(this.symbol, (error, name) =>
-        {
-            if(error)
-            {
-                console.log(error);
-            }
-            else
-            {
-                this.name = name;
-            }
-        })
     }
 }
 
@@ -40,8 +26,6 @@ export class News
         this.summary = summary;
         this.url = url;
     }
-
-
 }
 
 export class User

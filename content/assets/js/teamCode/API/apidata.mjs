@@ -1,6 +1,6 @@
-import {restClient} from '@polygon.io/client-js';
+import {restClient} from '/@polygon.io/client-js';
 import {News, Stock} from "../model.mjs";
-import finnhub from 'finnhub';
+import finnhub from '../../../../../node_modules/finnhub/dist/index.js';
 
 const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
 const api_key = finnhub.ApiClient.instance.authentications['api_key'];

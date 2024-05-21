@@ -1,4 +1,5 @@
 import {getUser, updateUser} from "./ServerClient/serverClient.mjs";
+import {getQuote} from "./API/apidata.mjs";
 
 
 // Funktion um die Daten vom JSON-Server zu holen
@@ -10,15 +11,31 @@ async function fetchStocks() {
         const tableBody = document.getElementById('stocks-table-body');
 
         stocks.forEach(stock => {
+            let quote;
+
+            getQuote(stock.symbol, (error, q) =>
+            {
+                if(error) {
+                    console.log(error);
+                }
+                else {
+                    quote = q;
+                }
+            });
+
             const row = document.createElement('tr');
 
             const nameCell = document.createElement('td');
-            nameCell.textContent = stock.name;
+            nameCell.textContent = quote.name;
             row.appendChild(nameCell);
 
             const symbolCell = document.createElement('td');
-            symbolCell.textContent = stock.symbol;
+            symbolCell.textContent = quote.symbol;
             row.appendChild(symbolCell);
+
+            const priceCell = document.createElement('td');
+            priceCell.textContent = quote.price;
+            row.appendChild(priceCell);
 
             const buyButtonCell = document.createElement('td');
             const buyButton = document.createElement('button');
