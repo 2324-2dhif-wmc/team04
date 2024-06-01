@@ -1,12 +1,22 @@
-import {buildInfo} from "./info-manager.mjs";
-const tableBody = document.getElementById('stock-table-body');
 
-function fetchStocks() {
+const tableBody = document.getElementById('stock-table-body');
+const searchButton = document.getElementById('search-button');
+const searchInput = document.getElementById('search-input');
+searchButton.addEventListener('click', function () {
+    const query = searchInput.value.toLowerCase();
+    fetchStocks(query);
+});
+
+
+
+function fetchStocks(query = '') {
     fetch('http://localhost:3000/stocks')
         .then(response => response.json())
         .then(data => {
             tableBody.innerHTML = '';
-            data.forEach(stock => {
+            data
+                .filter(stock => stock.name.toLowerCase().startsWith(query))
+                .forEach(stock => {
                 const row = document.createElement('tr');
                 const cell = document.createElement('td');
                 cell.textContent = stock.name;
