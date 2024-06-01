@@ -1,6 +1,9 @@
 import { getStockNews } from "./API/apidata.mjs";
 
-export async function buildInfo(symbol) {
+let symbol = window.location.search.split("=")[1];
+
+
+export async function buildInfo() {
     document.getElementById("stock-symbol").textContent = symbol;
 
     const news = await getStockNews(symbol);
@@ -21,3 +24,4 @@ export async function buildInfo(symbol) {
     });
 }
 
+buildInfo();
