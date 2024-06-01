@@ -10,6 +10,12 @@ function fetchStocks() {
                 const row = document.createElement('tr');
                 const cell = document.createElement('td');
                 cell.textContent = stock.name;
+                cell.setAttribute('data-symbol', stock.symbol);
+                cell.addEventListener('click', function () {
+                    const symbol = this.getAttribute('data-symbol');
+                    window.location.href = "../../../stockInfo.html";
+                    buildInfo(symbol);
+                });
                 row.appendChild(cell);
                 tableBody.appendChild(row);
             });
