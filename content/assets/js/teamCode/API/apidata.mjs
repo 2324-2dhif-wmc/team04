@@ -1,12 +1,15 @@
-import {restClient} from '@polygon.io/client-js';
 import {News, Stock} from "../model.mjs";
+/*
+
+import {restClient} from '@polygon.io/client-js';
+
 import finnhub from '../../../../../node_modules/finnhub/dist/index.js';
 
 const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
 const api_key = finnhub.ApiClient.instance.authentications['api_key'];
 api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
 const finnhubClient = new finnhub.DefaultApi();
-
+*/
 
 function getDateString(date)
 {
@@ -15,7 +18,7 @@ function getDateString(date)
     return `${date.getFullYear()}-${month}-${day}`;
 }
 
-export function getStockNews(symbol, callback)
+export async function getStockNews(symbol)
 {
     let beginning = new Date();
     beginning.setDate(beginning.getDate() - 1);
@@ -23,18 +26,21 @@ export function getStockNews(symbol, callback)
     const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
 
     const url = `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${getDateString(beginning).toString()}&to=${getDateString(new Date())}&token=${apiKey}`
-    fetch(url)
-    .then(response => response.json())
-    .then(data =>
-    {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+        }
+        const data = await response.json();
         console.log(data);
-        let news =  new News(symbol, data.datetime, data.headline, data.image, data.source, data.summary, data.url);
-        callback(null, news);
-    })
-    .catch(error => {
-        callback(error, null);
-    });
+        return data;
+    } catch (error) {
+        console.error('Fehler beim Abrufen der Daten:', error);
+        return null;
+    }
 }
+
+
 
 export function getThreeMonthRange(symbol, callback) {
     let cValues = [];
