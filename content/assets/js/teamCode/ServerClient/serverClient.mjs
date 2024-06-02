@@ -15,6 +15,7 @@ export function updateUser(user) {
         .catch(error => console.error('Error:', error));
 }
 
+
 export function getUser(email, callback)
 {
     fetch(`${userUrl}?email=${email}`, {

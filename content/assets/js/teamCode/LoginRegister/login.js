@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
             password: password
         };
 
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+
         // Überprüfung des Benutzers
         checkUser(userData);
     });

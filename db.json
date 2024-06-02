@@ -15,21 +15,15 @@
       "stocks": [
         {
           "symbol": "AAPL",
-          "currentStock": 100,
-          "highPrice": 100,
-          "lowPrice": 100,
-          "openPrice": 100,
-          "time": 1234567876
+          "boughtPrice": 100
         },
         {
           "name": "Apple Inc.",
-          "symbol": "AAPL",
-          "id": "d63a"
+          "boughtPrice": 100
         },
         {
-          "name": "Microsoft Corporation",
           "symbol": "MSFT",
-          "id": "78aa"
+          "boughtPrice": 100
         }
       ]
     },
