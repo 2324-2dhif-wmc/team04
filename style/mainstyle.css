@@ -27,3 +27,16 @@ body {
 .barr:hover{
     color: black;
 }
+
+.aboutus{
+    margin: 5%;
+    padding: 5%;
+    font-size: x-large;
+    background-color: white;
+}
+.imgg{
+    width: 18rem;
+    height: auto;
+    float: right;
+    margin: 2%;
+}
