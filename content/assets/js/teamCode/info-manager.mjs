@@ -25,3 +25,14 @@ export async function buildInfo() {
 }
 
 buildInfo();
+
+document.getElementById('numberForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Verhindert das Standard-Formular-Submit-Verhalten
+
+    const numberInput = document.getElementById('numberInput').value;
+
+    console.log(numberInput);
+
+
+
+});
