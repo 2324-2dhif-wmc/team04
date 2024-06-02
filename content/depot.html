@@ -6,7 +6,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>srtdash - ICO Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
@@ -48,10 +47,13 @@
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+                        <div class="user-profile m-0">
+                            <img class="avatar user-thumb" src="../pics/OIP.jpg" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown" id="Account"><i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="Market.html">Market</a>
+                                <a class="dropdown-item" href="depot.html">Depot</a>
+                                <a class="dropdown-item" href="AboutUs.html">About Us</a>
                                 <a class="dropdown-item" href="loginpage.html">Log Out</a>
                             </div>
                         </div>
@@ -124,10 +126,12 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h4 class="header-title mb-0">Overview</h4>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
+                                    <label>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected>Last 24 Hours</option>
+                                            <option value="0">01 July 2018</option>
+                                        </select>
+                                    </label>
                                 </div>
                                 <div id="verview-shart"></div>
                             </div>
@@ -150,10 +154,12 @@
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
                                     <h4 class="header-title mb-0">Market Value And Trends</h4>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
+                                    <label>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected>Last 24 Hours</option>
+                                            <option value="0">01 July 2018</option>
+                                        </select>
+                                    </label>
                                 </div>
                                 <div class="market-status-table mt-4">
                                     <div class="table-responsive">
@@ -271,10 +277,12 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
+                                    <label>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected>Last 24 Hours</option>
+                                            <option value="0">01 July 2018</option>
+                                        </select>
+                                    </label>
                                 </div>
                                 <div class="trad-history mt-4">
                                     <div class="tab-content" id="myTabContent">
@@ -598,7 +606,7 @@
     <!-- others plugins -->
     <script src="assets/js/templateCode/plugins.js"></script>
     <script src="assets/js/templateCode/scripts.js"></script>
-    <script src="../src/main.js"></script>
+    <script src="../content/assets/js/teamCode/main.js"></script>
 </body>
 
 </html>

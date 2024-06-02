@@ -23,7 +23,7 @@ function fetchStocks(query = '') {
                 cell.setAttribute('data-symbol', stock.symbol);
                 cell.addEventListener('click', function () {
                     const symbol = this.getAttribute('data-symbol');
-                    window.location.href = "http://localhost:63342/WMCPROJ/content/stockInfo.html?symbol=" + symbol;
+                    window.location.href = "../content/stockInfo.html?symbol=" + symbol;
                 });
                 row.appendChild(cell);
                 tableBody.appendChild(row);

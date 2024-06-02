@@ -36,14 +36,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 const user = users[0];
                 if (!user) {
                     console.log('Benutzer existiert nicht');
+                    alert("Benutzer existiert nicht");
                     return;
                 }
                 if (user.password !== data.password) {
                     console.log('Falsches Passwort');
+                    alert("Falsches Passwort")
                     return;
                 }
-                alert('Erfolgreich eingeloggt');
-                window.location.href = '../../../../mainpage.html';
+                window.location.href = 'mainpage.html';
             })
             .catch(error => {
                 console.error('Error:', error);
