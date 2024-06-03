@@ -1,5 +1,12 @@
 import {getStockName} from "./ServerClient/serverClient.mjs";
 
+export function getDateString(date)
+{
+    let month = ("00" + (date.getMonth() + 1)).slice(-2);
+    let day = ("00" + date.getDate()).slice(-2);
+    return `${date.getFullYear()}-${month}-${day}`;
+}
+
 export class Stock
 {
     constructor(symbol, name, currentStock, highPrice, lowPrice, openPrice, timestamp)
@@ -61,7 +68,7 @@ export class Info
 {
     constructor(date, val)
     {
-        this.date = new Date(date*1000);
+        this.date = getDateString(new Date(date*1000));
         this.val = val;
     }
 }

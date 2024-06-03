@@ -1,11 +1,4 @@
-import {Stock, Info} from "../model.mjs";
-
-export function getDateString(date)
-{
-    let month = ("00" + (date.getMonth() + 1)).slice(-2);
-    let day = ("00" + date.getDate()).slice(-2);
-    return `${date.getFullYear()}-${month}-${day}`;
-}
+import {Stock, Info, getDateString} from "../model.mjs";
 
 
 export async function getStockNews(symbol)
