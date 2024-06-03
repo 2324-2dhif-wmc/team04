@@ -15,7 +15,7 @@ export function updateUser(user) {
         .catch(error => console.error('Error:', error));
 }
 
-export async function getUser(email)
+export function getUser(email, callback)
 {
     fetch(`${userUrl}?email=${email}`, {
         method: 'GET',
@@ -30,11 +30,20 @@ export async function getUser(email)
             return response.json();
         })
         .then(users => {
-            let user = users[0];
-            return new User(user.id, user.email, user.password, user.name, user.money, user.stocks);
+            const user = users[0];
+            if (!user) {
+                console.log('Benutzer existiert nicht');
+                return;
+            }
+
+            let us =  new User(user.id, user.email, user.password, user.name, user.money, user.stocks);
+
+            callback(null, us);
+
         })
-        .catch(error => {return null;});
+        .catch(error => {callback(error, null);});
 }
+
 
 export async function getStockName(symbol)
 {
