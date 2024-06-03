@@ -25,7 +25,7 @@ export async function getStockNews(symbol)
 export async function getRange(symbol) {
     try {
         let d = new Date();
-        d.setMonth(d.getMonth() - 3);
+        d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
 
         let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
@@ -41,18 +41,6 @@ export async function getRange(symbol) {
         console.log("Fehler beim Abrufen der Daten:", error);
     }
 }
-
-export function generateDateRangeArray(startDate, endDate) {
-    const dateArray = [];
-    let currentDate = new Date(startDate);
-
-    while (currentDate <= new Date(endDate)) {
-        dateArray.push(currentDate.toISOString().slice(0, 10));
-        currentDate.setDate(currentDate.getDate() + 1);
-    }
-    return dateArray;
-}
-
 
 export async function getQuote(symbol, callback) {
     let key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
