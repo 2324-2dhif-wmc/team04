@@ -27,6 +27,7 @@ export async function getRange(symbol) {
         let d = new Date();
         d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
+        console.log(to);
 
         let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
 
@@ -42,14 +43,15 @@ export async function getRange(symbol) {
     }
 }
 
-export async function getQuote(symbol, callback) {
+export async function getQuote(symbol) {
     let key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
     const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            return new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
-        })
-        .catch(error => {return null;});
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
 }

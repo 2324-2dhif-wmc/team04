@@ -13,18 +13,6 @@
       "name": "test",
       "money": 50000,
       "stocks": [
-        {
-          "symbol": "AAPL",
-          "boughtPrice": 100
-        },
-        {
-          "name": "Apple Inc.",
-          "boughtPrice": 100
-        },
-        {
-          "symbol": "MSFT",
-          "boughtPrice": 100
-        }
       ]
     },
     {

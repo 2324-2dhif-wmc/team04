@@ -1,4 +1,6 @@
-import { getStockNews } from "./API/apidata.mjs";
+import { getStockNews, getQuote } from "./API/apidata.mjs";
+import {buyStock, getUser} from "./ServerClient/serverClient.mjs";
+import {buy} from "./UserInteraction/buySell.mjs";
 
 let symbol = window.location.search.split("=")[1];
 
@@ -24,11 +26,38 @@ export async function buildInfo() {
 }
 
 buildInfo();
+let info;
+
+let user = JSON.parse(localStorage.getItem('currentUser'));
+let fixedUser;
+let flag = false;
+
+await getUser(user.email, (error, user) => {
+    if(error)
+    {
+        console.log(error);
+    }
+    fixedUser = user;
+    flag = true;
+});
+
+while (!flag) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+}
+
+
+getQuote(symbol).then(stock => {
+    let element = document.getElementById("quote");
+    element.innerHTML = stock.currentStock + " USD";
+    info = stock;
+});
+
+
 
 document.getElementById('numberForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Verhindert das Standard-Formular-Submit-Verhalten
+    event.preventDefault();
 
     const numberInput = document.getElementById('numberInput').value;
+    buyStock(fixedUser, info, numberInput).then(() => alert("Stock bought!"));
 
-    console.log(numberInput);
 });

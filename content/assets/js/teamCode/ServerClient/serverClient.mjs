@@ -64,3 +64,32 @@ export async function getStockName(symbol)
         })
         .catch(error => {return null});
 }
+
+export async function buyStock(user, stock, amount)
+{
+    let newStock = {
+        symbol: stock.symbol,
+        price: stock.currentStock,
+        amount: amount
+    }
+
+    let found = false;
+    for(let i = 0; i < user.stocks.length; i++)
+    {
+        if(user.stocks[i].symbol === newStock.symbol)
+        {
+            user.stocks[i].amount = parseInt(user.stocks[0].amount) + parseInt(amount);
+            found = true;
+            break;
+        }
+    }
+
+    if(!found)
+    {
+        user.stocks.push(newStock);
+    }
+
+    user.money -= stock.currentStock * amount;
+
+    updateUser(user);
+}
