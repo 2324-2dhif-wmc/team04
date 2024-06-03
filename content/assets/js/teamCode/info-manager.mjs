@@ -2,7 +2,6 @@ import { getStockNews } from "./API/apidata.mjs";
 
 let symbol = window.location.search.split("=")[1];
 
-
 export async function buildInfo() {
     document.getElementById("stock-symbol").textContent = symbol;
 
@@ -32,7 +31,4 @@ document.getElementById('numberForm').addEventListener('submit', function(event)
     const numberInput = document.getElementById('numberInput').value;
 
     console.log(numberInput);
-
-
-
 });

@@ -1,22 +1,5 @@
-import {News, Stock} from "../model.mjs";
-/*
+import {getDateString, Stock} from "../model.mjs";
 
-import {restClient} from '@polygon.io/client-js';
-
-import finnhub from '../../../../../node_modules/finnhub/dist/index.js';
-
-const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
-const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-const finnhubClient = new finnhub.DefaultApi();
-*/
-
-function getDateString(date)
-{
-    let month = ("00" + (date.getMonth() + 1)).slice(-2);
-    let day = ("00" + date.getDate()).slice(-2);
-    return `${date.getFullYear()}-${month}-${day}`;
-}
 
 export async function getStockNews(symbol)
 {
@@ -32,7 +15,6 @@ export async function getStockNews(symbol)
             throw new Error(`HTTP-Fehler! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
@@ -40,18 +22,25 @@ export async function getStockNews(symbol)
     }
 }
 
+export async function getRange(symbol) {
+    try {
+        let d = new Date();
+        d.setMonth(d.getMonth() - 3);
+        let to = getDateString(d);
 
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
 
-export function getThreeMonthRange(symbol, callback) {
-    let cValues = [];
-    rest.stocks.aggregates(symbol, 1, "day", "2023-01-01", "2023-03-01").then((data) => {
-        for(let i = 0; i < data.results.length; i++) {
-            cValues.push(data.results[i].c);
-        }
-        callback(null, cValues);
-    });
+        let resp = await fetch(url);
+        let data = await resp.json();
+
+        return data.results.map(d => ({
+            date: new Date(d.t),
+            visits: d.c,
+        }));
+    } catch (error) {
+        console.log("Fehler beim Abrufen der Daten:", error);
+    }
 }
-
 
 export function generateDateRangeArray(startDate, endDate) {
     const dateArray = [];
@@ -65,43 +54,14 @@ export function generateDateRangeArray(startDate, endDate) {
 }
 
 
-export function getQuote(symbol, callback) {
-
-    const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-    api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-    const finnhubClient = new finnhub.DefaultApi();
-    const key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-
-    /*
+export async function getQuote(symbol, callback) {
+    let key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
     const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            let quote = new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
-
-            callback(null, quote);
+            return new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
         })
-        .catch(error => {callback(error, null);});
-        */
-
-
-
-    finnhubClient.quote('AAPL', (error, data, response) => {
-        if (error) {
-            callback(error, null);
-        } else {
-            const stock = new Stock (
-                symbol,
-                data.c, // Aktueller Preis
-                data.h, // Höchster Preis des Tages
-                data.l, // Niedrigster Preis des Tages
-                data.o, // Eröffnungspreis
-                data.t // time
-            );
-            console.log(data);
-            callback(null, stock);
-        }
-    });
-
+        .catch(error => {return null;});
 }

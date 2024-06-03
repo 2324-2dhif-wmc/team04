@@ -1,5 +1,13 @@
 import {getStockName} from "./ServerClient/serverClient.mjs";
 
+export function getDateString(date)
+{
+    let year = date.getFullYear();
+    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 export class Stock
 {
     constructor(symbol, name, currentStock, highPrice, lowPrice, openPrice, timestamp)
@@ -54,5 +62,14 @@ export class User
     removeStock(symbol)
     {
         return this.stocks.filter(s => s.symbol === symbol);
+    }
+}
+
+export class Info
+{
+    constructor(date, val)
+    {
+        this.date = getDateString(new Date(date*1000));
+        this.val = val;
     }
 }
