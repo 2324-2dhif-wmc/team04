@@ -25,7 +25,7 @@ export async function getStockNews(symbol)
 export async function getRange(symbol) {
     try {
         let d = new Date();
-        d.setMonth(d.getMonth() - 3);
+        d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
 
         let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
