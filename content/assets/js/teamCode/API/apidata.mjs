@@ -1,6 +1,6 @@
-import {Stock} from "../model.mjs";
+import {Stock, Info} from "../model.mjs";
 
-function getDateString(date)
+export function getDateString(date)
 {
     let month = ("00" + (date.getMonth() + 1)).slice(-2);
     let day = ("00" + date.getDate()).slice(-2);
@@ -42,7 +42,7 @@ export async function getThreeMonthRange(symbol, range, span) {
         .then(res => res.json())
         .then(data => {
             for(let d of data.results) {
-                val.push(d.c);
+                val.push(new Info(d.t, d.c));
             }
             return val;
         })

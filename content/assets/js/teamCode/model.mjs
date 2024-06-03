@@ -56,3 +56,12 @@ export class User
         return this.stocks.filter(s => s.symbol === symbol);
     }
 }
+
+export class Info
+{
+    constructor(date, val)
+    {
+        this.date = new Date(date*1000);
+        this.val = val;
+    }
+}
