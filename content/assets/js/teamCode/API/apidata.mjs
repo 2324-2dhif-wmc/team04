@@ -1,4 +1,4 @@
-import {Stock, Info, getDateString} from "../model.mjs";
+import {getDateString, Stock} from "../model.mjs";
 
 
 export async function getStockNews(symbol)
@@ -22,8 +22,8 @@ export async function getStockNews(symbol)
     }
 }
 
-export async function getThreeMonthRange(symbol, range, span) {
-    let from = getDateString(new Date());
+export async function getRange(symbol, range, span) {
+    /*let from = getDateString(new Date());
     let d = new Date();
     d.setDate(d.getDate() - range);
     let to = getDateString(d);
@@ -35,11 +35,27 @@ export async function getThreeMonthRange(symbol, range, span) {
         .then(res => res.json())
         .then(data => {
             for(let d of data.results) {
-                val.push(new Info(d.t, d.c));
+                val.push({
+                    date: new Date(d.c * 1000),
+                    visits: d.c,
+                });
             }
             return val;
         })
         .catch(error => {return null;})
+    */
+
+    try {
+        let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-25?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+
+        let resp = await fetch(url);
+        let data = await resp.json();
+
+        return data.results.map(d => ({
+            date: new Date(d.t),
+            visits: d.c,
+        }));
+    } catch (error) {}
 }
 
 export function generateDateRangeArray(startDate, endDate) {
