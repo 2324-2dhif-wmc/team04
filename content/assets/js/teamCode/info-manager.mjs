@@ -32,7 +32,4 @@ document.getElementById('numberForm').addEventListener('submit', function(event)
     const numberInput = document.getElementById('numberInput').value;
 
     console.log(numberInput);
-
-
-
 });

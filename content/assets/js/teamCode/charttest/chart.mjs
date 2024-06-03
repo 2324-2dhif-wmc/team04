@@ -1,48 +1,57 @@
-import * as d3 from 'https://cdn.skypack.dev/d3'; // Einbinden von D3.js
-import {dataArr} from "./dataManipulation.mjs";
 
-// Laden der generierten Daten
-const data = dataArr;
 
-console.log(data);
+let data;
 
-// Größe des Diagramms
-const width = 400;
-const height = 300;
 
-// Erstellen einer D3.js-Auswahl für das Diagrammcontainer-Element
-const svg = d3.select("#chart")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height);
 
-// Erstellen der Balken im Diagramm
-svg.selectAll("rect")
-    .data(data)
-    .enter()
-    .append("rect")
-    .attr("x", (d, i) => i * 70)
-    .attr("y", (d) => height - d * 3)
-    .attr("width", 65)
-    .attr("height", (d) => d * 3)
-    .attr("fill", "teal");
-
-// Hinzufügen von Beschriftungen zu den Balken
-svg.selectAll("text")
-    .data(data)
-    .enter()
-    .append("text")
-    .text((d) => d)
-    .attr("x", (d, i) => i * 70 + 30)
-    .attr("y", (d) => height - d * 3 - 10)
-    .attr("text-anchor", "middle")
-    .attr("fill", "white");
-
-// Funktion zum Generieren von zufälligen Daten für den Chart
-function generateRandomData(numPoints) {
-    const data = [];
-    for (let i = 0; i < numPoints; i++) {
-        data.push(Math.floor(Math.random() * 100) + 1); // Zufallszahl zwischen 1 und 100
+var ctx = document.getElementById("coin_sales2").getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+    // The data for our dataset
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "January", "February", "March", "April", "May"],
+        datasets: [{
+            label: "Price",
+            backgroundColor: "rgba(240, 180, 26, 0.1)",
+            borderColor: '#F0B41A',
+            data: [18, 41, 86, 49, 20, 65, 64, 50, 49, 30, 45, 25],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        legend: {
+            display: false
+        },
+        animation: {
+            easing: "easeInOutBack"
+        },
+        scales: {
+            yAxes: [{
+                display: !1,
+                ticks: {
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold",
+                    beginAtZero: !0,
+                    maxTicksLimit: 5,
+                    padding: 0
+                },
+                gridLines: {
+                    drawTicks: !1,
+                    display: !1
+                }
+            }],
+            xAxes: [{
+                display: !1,
+                gridLines: {
+                    zeroLineColor: "transparent"
+                },
+                ticks: {
+                    padding: 0,
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold"
+                }
+            }]
+        }
     }
-    return data;
-}
+});

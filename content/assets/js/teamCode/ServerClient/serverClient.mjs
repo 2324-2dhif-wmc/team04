@@ -1,4 +1,4 @@
-import {Stock, User} from "../model.mjs";
+import {User} from "../model.mjs";
 
 const userUrl = 'http://localhost:3000/users';
 const stockUrl = 'http://localhost:3000/stocks';
@@ -15,8 +15,7 @@ export function updateUser(user) {
         .catch(error => console.error('Error:', error));
 }
 
-
-export function getUser(email, callback)
+export async function getUser(email)
 {
     fetch(`${userUrl}?email=${email}`, {
         method: 'GET',
@@ -31,21 +30,13 @@ export function getUser(email, callback)
             return response.json();
         })
         .then(users => {
-            const user = users[0];
-            if (!user) {
-                console.log('Benutzer existiert nicht');
-                return;
-            }
-
-            let us =  new User(user.id, user.email, user.password, user.name, user.money, user.stocks);
-
-            callback(null, us);
-
+            let user = users[0];
+            return new User(user.id, user.email, user.password, user.name, user.money, user.stocks);
         })
-        .catch(error => {callback(error, null);});
+        .catch(error => {return null;});
 }
 
-export function getStockName(symbol, callback)
+export async function getStockName(symbol)
 {
     fetch(`${stockUrl}?symbol=${symbol}`, {
         method: 'GET',
@@ -60,7 +51,7 @@ export function getStockName(symbol, callback)
             return response.json();
         })
         .then(data => {
-            callback(null, data[0].name);
+            return data[0].name;
         })
-        .catch(error => {callback(error, null);});
+        .catch(error => {return null});
 }

@@ -1,15 +1,4 @@
-import {News, Stock} from "../model.mjs";
-/*
-
-import {restClient} from '@polygon.io/client-js';
-
-import finnhub from '../../../../../node_modules/finnhub/dist/index.js';
-
-const rest = restClient('aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5');
-const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-const finnhubClient = new finnhub.DefaultApi();
-*/
+import {Stock} from "../model.mjs";
 
 function getDateString(date)
 {
@@ -17,6 +6,7 @@ function getDateString(date)
     let day = ("00" + date.getDate()).slice(-2);
     return `${date.getFullYear()}-${month}-${day}`;
 }
+
 
 export async function getStockNews(symbol)
 {
@@ -42,14 +32,21 @@ export async function getStockNews(symbol)
 
 
 
-export function getThreeMonthRange(symbol, callback) {
-    let cValues = [];
-    rest.stocks.aggregates(symbol, 1, "day", "2023-01-01", "2023-03-01").then((data) => {
-        for(let i = 0; i < data.results.length; i++) {
-            cValues.push(data.results[i].c);
-        }
-        callback(null, cValues);
-    });
+export async function getThreeMonthRange(symbol, callback) {
+    let from = getDateString(new Date());
+    let to = getDateString(new Date().getDate() - 3);
+    let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${from}/${to}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+
+    let val = [];
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            for(let d in data) {
+                val.push([data[d]].c);
+            }
+            return val;
+        })
+        .catch(error => {return null;})
 }
 
 
@@ -65,43 +62,13 @@ export function generateDateRangeArray(startDate, endDate) {
 }
 
 
-export function getQuote(symbol, callback) {
-
-    const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-    api_key.apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-    const finnhubClient = new finnhub.DefaultApi();
-    const key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-
-    /*
+export async function getQuote(symbol, callback) {
     const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            let quote = new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
-
-            callback(null, quote);
+            return new Stock(symbol, data.c, data.h, data.l, data.o, data.t);
         })
-        .catch(error => {callback(error, null);});
-        */
-
-
-
-    finnhubClient.quote('AAPL', (error, data, response) => {
-        if (error) {
-            callback(error, null);
-        } else {
-            const stock = new Stock (
-                symbol,
-                data.c, // Aktueller Preis
-                data.h, // Höchster Preis des Tages
-                data.l, // Niedrigster Preis des Tages
-                data.o, // Eröffnungspreis
-                data.t // time
-            );
-            console.log(data);
-            callback(null, stock);
-        }
-    });
-
+        .catch(error => {return null;});
 }
