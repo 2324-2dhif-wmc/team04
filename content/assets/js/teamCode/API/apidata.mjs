@@ -30,12 +30,10 @@ export async function getStockNews(symbol)
     }
 }
 
-
-
-export async function getThreeMonthRange(symbol, callback) {
+export async function getThreeMonthRange(symbol, range, span, mul) {
     let from = getDateString(new Date());
-    let to = getDateString(new Date().getDate() - 3);
-    let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${from}/${to}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+    let to = getDateString(new Date().getDate() - range);
+    let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/${mul}/${span}/${from}/${to}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
 
     let val = [];
     fetch(url)
@@ -63,6 +61,7 @@ export function generateDateRangeArray(startDate, endDate) {
 
 
 export async function getQuote(symbol, callback) {
+    let key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
     const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
 
     fetch(url)

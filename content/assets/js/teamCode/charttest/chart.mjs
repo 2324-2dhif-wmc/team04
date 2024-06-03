@@ -1,8 +1,7 @@
+import {getThreeMonthRange} from "../API/apidata.mjs";
 
-
-let data;
-
-
+let user = JSON.parse(localStorage.getItem('currentUser'));
+let data = await getThreeMonthRange(user.symbol, 24, "day", 1);
 
 var ctx = document.getElementById("coin_sales2").getContext('2d');
 var chart = new Chart(ctx, {
@@ -15,7 +14,7 @@ var chart = new Chart(ctx, {
             label: "Price",
             backgroundColor: "rgba(240, 180, 26, 0.1)",
             borderColor: '#F0B41A',
-            data: [18, 41, 86, 49, 20, 65, 64, 50, 49, 30, 45, 25],
+            data: data,
         }]
     },
     // Configuration options go here
