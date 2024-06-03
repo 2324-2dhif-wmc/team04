@@ -42,18 +42,6 @@ export async function getRange(symbol) {
     }
 }
 
-export function generateDateRangeArray(startDate, endDate) {
-    const dateArray = [];
-    let currentDate = new Date(startDate);
-
-    while (currentDate <= new Date(endDate)) {
-        dateArray.push(currentDate.toISOString().slice(0, 10));
-        currentDate.setDate(currentDate.getDate() + 1);
-    }
-    return dateArray;
-}
-
-
 export async function getQuote(symbol, callback) {
     let key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
     const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
