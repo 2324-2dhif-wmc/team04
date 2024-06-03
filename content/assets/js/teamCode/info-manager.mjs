@@ -12,7 +12,7 @@ export async function buildInfo() {
         let newsElement = document.createElement("div");
         newsElement.classList.add("col-12", "mb-4");
         newsElement.innerHTML = `
-            <div class="card h-100">
+            <div class="card h-100" style = "width: 70%">
                 <img src="${newsItem.image}" class="card-img-top" alt="${newsItem.headline}">
                 <div class="card-body">
                     <h5 class="card-title">${newsItem.headline}</h5>
