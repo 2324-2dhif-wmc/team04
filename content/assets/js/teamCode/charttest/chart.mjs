@@ -1,9 +1,10 @@
 import {getThreeMonthRange} from "../API/apidata.mjs";
 
 let user = JSON.parse(localStorage.getItem('currentUser'));
-let data = await getThreeMonthRange(user.symbol, 24, "day", 1);
+let data = await getThreeMonthRange("AAPL", 2, "day", 1);
+// window.location.search.split("=")[1]
 
-var ctx = document.getElementById("coin_sales2").getContext('2d');
+var ctx = document.getElementById("price").getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
@@ -14,7 +15,7 @@ var chart = new Chart(ctx, {
             label: "Price",
             backgroundColor: "rgba(240, 180, 26, 0.1)",
             borderColor: '#F0B41A',
-            data: data,
+            data: [1,2,3,4,5,6,7,8,9,10,11,12],
         }]
     },
     // Configuration options go here

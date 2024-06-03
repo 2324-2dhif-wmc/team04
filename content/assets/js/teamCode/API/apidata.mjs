@@ -22,7 +22,6 @@ export async function getStockNews(symbol)
             throw new Error(`HTTP-Fehler! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
@@ -30,23 +29,25 @@ export async function getStockNews(symbol)
     }
 }
 
-export async function getThreeMonthRange(symbol, range, span, mul) {
+export async function getThreeMonthRange(symbol, range, span) {
     let from = getDateString(new Date());
-    let to = getDateString(new Date().getDate() - range);
-    let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/${mul}/${span}/${from}/${to}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+    let d = new Date();
+    d.setDate(d.getDate() - range);
+    let to = getDateString(d);
+    //let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/${span}/${from}/${to}?apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+    let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-25?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
 
     let val = [];
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            for(let d in data) {
-                val.push([data[d]].c);
+            for(let d of data.results) {
+                val.push(d.c);
             }
             return val;
         })
         .catch(error => {return null;})
 }
-
 
 export function generateDateRangeArray(startDate, endDate) {
     const dateArray = [];
