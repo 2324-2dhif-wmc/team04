@@ -22,31 +22,13 @@ export async function getStockNews(symbol)
     }
 }
 
-export async function getRange(symbol, range, span) {
-    /*let from = getDateString(new Date());
-    let d = new Date();
-    d.setDate(d.getDate() - range);
-    let to = getDateString(d);
-    //let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/${span}/${from}/${to}?apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
-    let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-25?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
-
-    let val = [];
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            for(let d of data.results) {
-                val.push({
-                    date: new Date(d.c * 1000),
-                    visits: d.c,
-                });
-            }
-            return val;
-        })
-        .catch(error => {return null;})
-    */
-
+export async function getRange(symbol) {
     try {
-        let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2023-01-09/2023-01-25?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+        let d = new Date();
+        d.setMonth(d.getMonth() - 3);
+        let to = getDateString(d);
+
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
 
         let resp = await fetch(url);
         let data = await resp.json();
@@ -55,7 +37,9 @@ export async function getRange(symbol, range, span) {
             date: new Date(d.t),
             visits: d.c,
         }));
-    } catch (error) {}
+    } catch (error) {
+        console.log("Fehler beim Abrufen der Daten:", error);
+    }
 }
 
 export function generateDateRangeArray(startDate, endDate) {

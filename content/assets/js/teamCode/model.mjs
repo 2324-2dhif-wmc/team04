@@ -2,9 +2,10 @@ import {getStockName} from "./ServerClient/serverClient.mjs";
 
 export function getDateString(date)
 {
-    let month = ("00" + (date.getMonth() + 1)).slice(-2);
-    let day = ("00" + date.getDate()).slice(-2);
-    return `${date.getFullYear()}-${month}-${day}`;
+    let year = date.getFullYear();
+    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 export class Stock
