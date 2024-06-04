@@ -27,15 +27,21 @@ localStorage.setItem('currentUser', JSON.stringify(fixedUser));
 
 let status = await getMarketStatus();
 let holiday = await getHoliday();
-if (holiday === null) {
-    holiday = "no Holiday";
+console.log(holiday);
+let hoday = "no Holiday";
+if (status.holiday !== null) {
+    hoday = status.holiday;
+}
+
+let open = "Open";
+if (status.isOpen === false) {
+    open = "Closed";
 }
 let table = document.getElementById("marketStats");
 table.innerHTML = `
     <td>US Market</td>
-    <td>${holiday}</td>
-    <td>${status}</td>
-    <td>${status}</td>
+    <td>${hoday}</td>
+    <td>${open}</td>
+    <td>${status.session}</td>
     <td>Amerika, New-York</td>
 `
-table.appendChild(table);
