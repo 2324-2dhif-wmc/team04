@@ -27,7 +27,6 @@ export async function getRange(symbol) {
         let d = new Date();
         d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
-        console.log(to);
 
         let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
 
@@ -38,6 +37,39 @@ export async function getRange(symbol) {
             date: new Date(d.t),
             visits: d.c,
         }));
+    } catch (error) {
+        console.log("Fehler beim Abrufen der Daten:", error);
+    }
+}
+
+function formatTime(date) {
+    let hours = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
+
+export async function getTodayStock(symbol) {
+    try {
+        let d = new Date();
+        d.setHours(d.getHours() - 24);
+        d = getDateString(d);
+
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${d}/${getDateString(new Date())}?adjusted=true&sort=desc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+
+        let resp = await fetch(url);
+        let data = await resp.json();
+
+        let strings = [];
+        let stocks = [];
+        for(let d of data.results)
+        {
+            let str = formatTime(new  Date(d.t * 1000));
+            let stock = d.c;
+            strings.push(str);
+            stocks.push(stock);
+        }
+
+        return [strings, stocks];
     } catch (error) {
         console.log("Fehler beim Abrufen der Daten:", error);
     }

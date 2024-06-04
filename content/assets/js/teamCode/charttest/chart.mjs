@@ -1,7 +1,10 @@
-import {getRange} from "../API/apidata.mjs";
+import {getRange, getTodayStock} from "../API/apidata.mjs";
 
 if ($('#price').length) {
-    var chartData = await getRange(window.location.search.split("=")[1]);
+    let range = await getRange(window.location.search.split("=")[1]);
+    let today = await getTodayStock(window.location.search.split("=")[1]);
+
+    var chartData = range;
     console.log(chartData);
     var chart = AmCharts.makeChart("price", {
         "type": "serial",
@@ -58,39 +61,48 @@ if ($('#price').length) {
             "enabled": false
         }
     });
-
-    /*chart.addListener("rendered", zoomChart);
-    zoomChart();
-
-    // this method is called when chart is first inited as we listen for "rendered" event
-    function zoomChart() {
-        // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-        chart.zoomToIndexes(chartData.length - 40, chartData.length - 1);
-    }
-
-     */
+}
 
 
-    // generate some random data, quite different range
-    function generateChartData() {
-        var chartData = [];
-        var firstDate = new Date();
-        firstDate.setDate(firstDate.getDate() - 5);
-        var visits = 1200;
-        for (var i = 0; i < 1000; i++) {
-            // we create date objects here. In your data, you can have date strings
-            // and then set format of your dates using chart.dataDateFormat property,
-            // however when possible, use date objects, as this will speed up chart rendering.
-            var newDate = new Date(firstDate);
-            newDate.setDate(newDate.getDate() + i);
+if ($('#today').length) {
+    let [str, stock] = await getTodayStock(window.location.search.split("=")[1]);
 
-            visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+    console.log(str);
+    console.log(stock);
+    var myConfig = {
+        "type": "line",
 
-            chartData.push({
-                date: newDate,
-                visits: visits
-            });
-        }
-        return chartData;
-    }
+        "scale-x": { //X-Axis
+            "labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
+            "label": {
+                "font-size": 14,
+                "offset-x": 0,
+            },
+            "item": { //Scale Items (scale values or labels)
+                "font-size": 10,
+            },
+            "guide": { //Guides
+                "visible": false,
+                "line-style": "solid", //"solid", "dotted", "dashed", "dashdot"
+                "alpha": 1
+            }
+        },
+        "plot": { "aspect": "spline" },
+        "series": [{
+            "values": [20, 25, 30, 35, 45, 40, 40, 35, 25, 17, 40, 50],
+            "line-color": "#F0B41A",
+            "line-width": 5 ,// px
+            "marker": {
+                "background-color": "#D79D3B",
+                "size": 5, // px
+                "border-color": "#D79D3B",
+            }}]
+    };
+
+    zingchart.render({
+        id: 'verview-shart',
+        data: myConfig,
+        height: "100%",
+        width: "100%"
+    });
 }
