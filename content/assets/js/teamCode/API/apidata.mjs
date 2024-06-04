@@ -1,12 +1,15 @@
 import {getDateString, Stock} from "../model.mjs";
 
+const finnhubKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
+const polygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+
 export async function getRange(symbol) {
     try {
         let d = new Date();
         d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${polygonKey}`;
 
         let resp = await fetch(url);
         let data = await resp.json();
@@ -32,7 +35,7 @@ export async function getTodayStock(symbol) {
         d.setHours(d.getHours() - 24);
         d = getDateString(d);
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${d}/${getDateString(new Date())}?adjusted=true&sort=desc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5`;
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${d}/${getDateString(new Date())}?adjusted=true&sort=desc&apiKey=${polygonKey}`;
 
         let resp = await fetch(url);
         let data = await resp.json();
@@ -54,8 +57,7 @@ export async function getTodayStock(symbol) {
 }
 
 export async function getQuote(symbol) {
-    let key = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-    const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${key}`;
+    const url = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${finnhubKey}`;
 
     const response = await fetch(url);
 
@@ -68,9 +70,7 @@ export async function getQuote(symbol) {
 
 export async function getMarketStatus() {
     try {
-        const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-
-        let url = `https://finnhub.io/api/v1/stock/market-status?exchange=US&token=${apiKey}`;
+        let url = `https://finnhub.io/api/v1/stock/market-status?exchange=US&token=${finnhubKey}`;
         let resp = await fetch(url);
         return await resp.json();
     } catch (error) {
@@ -80,9 +80,7 @@ export async function getMarketStatus() {
 
 export async function getHoliday() {
     try {
-        const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-
-        let url = `https://finnhub.io/api/v1/stock/market-holiday?exchange=US&token=${apiKey}`;
+        let url = `https://finnhub.io/api/v1/stock/market-holiday?exchange=US&token=${finnhubKey}`;
 
         let resp = await fetch(url);
         return await resp.json();
@@ -96,18 +94,27 @@ export async function getStockNews(symbol)
     let beginning = new Date();
     beginning.setDate(beginning.getDate() - 1);
 
-    const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-
-    const url = `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${getDateString(beginning).toString()}&to=${getDateString(new Date())}&token=${apiKey}`
+    const url = `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${getDateString(beginning).toString()}&to=${getDateString(new Date())}&token=${finnhubKey}`
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP-Fehler! Status: ${response.status}`);
         }
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
         return null;
+    }
+}
+
+export async function getMarketNews()
+{
+    try {
+        const url = `https://finnhub.io/api/v1/news?category=general&token=${finnhubKey}`;
+
+        const response = await fetch(url);
+        return await response.json();
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Daten:", error);
     }
 }
