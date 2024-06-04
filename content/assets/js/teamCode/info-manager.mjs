@@ -1,6 +1,5 @@
 import { getStockNews, getQuote } from "./API/apidata.mjs";
 import {buyStock, getUser} from "./ServerClient/serverClient.mjs";
-import {buy} from "./UserInteraction/buySell.mjs";
 
 let symbol = window.location.search.split("=")[1];
 
