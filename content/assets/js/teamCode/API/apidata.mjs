@@ -89,7 +89,6 @@ export async function getHoliday() {
     } catch (error) {
         console.log("Fehler beim Abrufen der Daten:", error);
     }
-
 }
 
 export async function getStockNews(symbol)
