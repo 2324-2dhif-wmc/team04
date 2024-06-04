@@ -70,10 +70,8 @@ export async function getMarketStatus() {
     try {
         const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
 
-        let url = `https://finnhub.io/api/v1/stock/market-status&exchange=US?token=${apiKey}`;
-        console.log(1)
+        let url = `https://finnhub.io/api/v1/stock/market-status?exchange=US&token=${apiKey}`;
         let resp = await fetch(url);
-        console.log(1)
         return await resp.json();
     } catch (error) {
         console.log("Fehler beim Abrufen der Daten:", error);
@@ -84,7 +82,7 @@ export async function getHoliday() {
     try {
         const apiKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
 
-        let url = `https://finnhub.io/api/v1/stock/market-holiday&exchange=US?token=${apiKey}`;
+        let url = `https://finnhub.io/api/v1/stock/market-holiday?exchange=US&token=${apiKey}`;
 
         let resp = await fetch(url);
         return await resp.json();

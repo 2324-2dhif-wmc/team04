@@ -26,7 +26,6 @@ x.innerHTML = fixedUser.name;
 localStorage.setItem('currentUser', JSON.stringify(fixedUser));
 
 let status = await getMarketStatus();
-console.log(status);
 let holiday = await getHoliday();
 if (holiday === null) {
     holiday = "no Holiday";
