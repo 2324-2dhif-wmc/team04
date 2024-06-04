@@ -34,6 +34,9 @@ body {
     font-size: x-large;
     background-color: white;
 }
+.aboutus.p{
+    font-size: larger;
+}
 .imgg{
     width: 18rem;
     height: auto;
