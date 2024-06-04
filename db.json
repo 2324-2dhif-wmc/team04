@@ -11,8 +11,13 @@
       "email": "test@gmail.com",
       "password": "test",
       "name": "test",
-      "money": 50000,
+      "money": 49025.05,
       "stocks": [
+        {
+          "symbol": "AAPL",
+          "price": 194.99,
+          "amount": "5"
+        }
       ]
     },
     {
