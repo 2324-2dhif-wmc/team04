@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mainpage</title>
+    <title>Trading-Trainer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../content/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../content/assets/css/font-awesome.min.css">
@@ -65,32 +65,99 @@
     <!-- main header area end -->
     <!-- page title area end -->
     <div class="main-content-inner">
-        <div class="container">
-                <div class="marketStats">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Exchange</th>
-                            <th>Holiday</th>
-                            <th>Open/Closed</th>
-                            <th>Market Session</th>
-                            <th>Timezone</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr id="marketStats">
-
-                        </tr>
-                        </tbody>
-                    </table>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="marketStats text-center">
+                        <table class="table table-striped table-bordered rounded">
+                            <thead class="thead-dark rounded">
+                            <tr>
+                                <th>Exchange</th>
+                                <th>Holiday</th>
+                                <th>Open/Closed</th>
+                                <th>Market Session</th>
+                                <th>Timezone</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr id="marketStats">
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            <div class="container my-4">
-                <h2>Latest News on the Stock Market:</h2>
-                <div id="marketNews" class="row border p-3 bg-light" style="width: 50%; height: 70vh; overflow-y: scroll">
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6" style="background-color: white; padding: 5%">
+                    <h2>Trading Trainer</h2>
+                    <p>Are you Upper Austria's best stock market player? Show off and train your skills in the markets! There are just a few things to know – and then you can get started!</p> <br> <br>
+                    <h2>Start Your Trading Journey Today</h2>
+                    <p>With Trading-Trainer we're more than just a training platform – we're your partner in success. Empower yourself with the knowledge and skills to achieve financial freedom and build a prosperous trading career. Sign up today and take the first step towards becoming a master trader.</p>
+                    <h2 style="text-align: center; margin-top: 6%">Get Started!</h2>
+                    <a href="#education" style="display: flex; justify-content: center; height: 10vh"><img src="../pics/pfeil.png" alt="Pfeil"></a>
+                </div>
+                <div class="col-md-6">
+                    <h2>Latest News on the Stock Market:</h2>
+                    <div id="marketNews" class="border p-3 bg-light rounded" style="height: 70vh; overflow-y: scroll;">
+                    </div>
                 </div>
             </div>
 
+            <div style="background-color: white; padding: 5%; margin: 5%; font-size: large">
+                <h2 id="education" style="text-align: center">Education</h2>
+                <div class="container mt-5">
+
+                    <h4>Understanding the Basics of Trading</h4>
+                    <p style="font-size: large">Trading can seem complex and intimidating at first, but with a solid understanding of the basics, anyone can start their journey toward becoming a successful trader. Let's break down the fundamental concepts you need to know.</p>
+                    <br> <br>
+                    <h4>What is Trading?</h4>
+                    <p style="font-size: large">Trading involves buying and selling financial instruments like stocks, bonds, commodities, or currencies with the goal of making a profit. Traders take advantage of market fluctuations to buy low and sell high.</p>
+                    <br> <br>
+                    <h3>Getting Started with Trading</h3>
+                    <br>
+                    <h4>1. Education</h4>
+                    <ul>
+                        <li>Learn the basics of how the stock market works.</li>
+                        <li>Understand different types of financial instruments and markets.</li>
+                        <li>Familiarize yourself with trading terminology and concepts.</li>
+                    </ul><br>
+
+                    <h4>2. Brokerage Account</h4>
+                    <p style="font-size: large">Open a brokerage account with a reputable broker. This account will be your gateway to buying and selling stocks, bonds, and other instruments.</p><br>
+
+                    <h4>3. Develop a Strategy</h4>
+                    <ul>
+                        <li>Decide on your trading style (day trading, swing trading, or long-term investing).</li>
+                        <li>Create a plan that outlines your goals, risk tolerance, and strategies for buying and selling.</li>
+                    </ul><br>
+
+                    <h4>4. Practice</h4>
+                    <ul>
+                        <li>Use paper trading or simulation accounts to practice without risking real money.</li>
+                        <li>Analyze your trades to understand what works and what doesn't.</li>
+                    </ul><br>
+
+                    <h4>Essential Tips for New Traders</h4>
+
+                    <ul>
+                        <li><strong>Start Small:</strong> Begin with a small amount of money you can afford to lose. As you gain experience and confidence, you can gradually increase your investment.</li>
+                        <li><strong>Stay Informed:</strong> Keep up with market news, trends, and economic indicators. Knowledge is power in the world of trading.</li>
+                        <li><strong>Manage Risk:</strong> Use stop-loss orders to limit potential losses. Never risk more than you can afford to lose on a single trade.</li>
+                        <li><strong>Be Patient:</strong> Successful trading takes time and patience. Avoid making impulsive decisions based on emotions.</li>
+                        <li><strong>Continual Learning:</strong> The markets are always changing. Stay curious and continuously seek to improve your knowledge and skills.</li>
+                    </ul><br>
+
+                    <h4>Here's a video for better understanding: </h4> <br>
+                    <div style="display: flex; justify-content: center">
+                        <iframe width="923" height="519" src="https://www.youtube.com/embed/LJR8v7XKt6g" title="How I Would Learn To Day Trade (If I Could Start Over)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen ></iframe>
+                    </div>
+                    <br> <br>
+                    <p style="font-size: large">Happy trading, and welcome to the exciting world of trading!</p>
+                </div>
+                <button class="back-to-top" onclick="scrollToTop()">&#8593;</button>
+            </div>
         </div>
+
     </div>
     <!-- main content area end -->
     <!-- footer area start-->
@@ -110,6 +177,22 @@
 <!-- main wrapper start -->
 
 <!-- offset area end -->
+<script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.querySelector('.back-to-top').style.display = 'block';
+        } else {
+            document.querySelector('.back-to-top').style.display = 'none';
+        }
+    };
+</script>
 <!-- jquery latest version -->
 <script src="../content/assets/js/vendor/jquery-2.2.4.min.js"></script>
 <!-- bootstrap 4 js -->
@@ -119,7 +202,7 @@
 <script src="../content/assets/js/templateCode/metisMenu.min.js"></script>
 <script src="../content/assets/js/templateCode/jquery.slimscroll.min.js"></script>
 <script src="../content/assets/js/templateCode/jquery.slicknav.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->

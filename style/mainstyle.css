@@ -51,5 +51,25 @@ footer .social-links a {
 
 .marketStats{
     float: right;
+}
 
+.back-to-top {
+    position: fixed;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    width: 4rem;
+    height: 4rem;
+    background-color: dimgray;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    line-height: 4rem;
+}
+
+.back-to-top:hover {
+    background-color: black;
 }
