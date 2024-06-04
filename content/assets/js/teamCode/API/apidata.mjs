@@ -73,10 +73,7 @@ export async function getMarketStatus() {
         let url = `https://finnhub.io/api/v1/stock/market-status&exchange=US?token=${apiKey}`;
 
         let resp = await fetch(url);
-        let data = await resp.json();
-
-        return [data.isOpen, data.session];
-
+        return await resp.json();
     } catch (error) {
         console.log("Fehler beim Abrufen der Daten:", error);
     }
