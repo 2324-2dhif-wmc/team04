@@ -38,7 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     const userData = {
                         name: name,
                         email: email,
-                        password: password1 // Hier verwenden wir nur das erste Passwortfeld
+                        password: password1, // Hier verwenden wir nur das erste Passwortfeld
+                        money: 50000,
+                        stocks: []
                     };
 
                     // Daten an den JSON-Server senden
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                window.location.href = '../../../../loginpage.html';
+                window.location.href = '../../../../login.html';
             })
             .catch((error) => {
                 console.error('Error:', error);
