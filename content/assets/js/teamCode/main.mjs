@@ -1,5 +1,3 @@
-import {User} from "./model.mjs";
-import {getUser} from "./ServerClient/serverClient.mjs";
 import {getHoliday, getMarketNews, getMarketStatus} from "./API/apidata.mjs";
 
 

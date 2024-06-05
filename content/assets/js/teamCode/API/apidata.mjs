@@ -1,7 +1,9 @@
 import {getDateString, Stock} from "../model.mjs";
 
 const finnhubKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-const polygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+const mpolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+const jpolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+
 
 export async function getRange(symbol) {
     try {
@@ -9,7 +11,7 @@ export async function getRange(symbol) {
         d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${polygonKey}`;
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${mpolygonKey}`;
 
         let resp = await fetch(url);
         let data = await resp.json();
@@ -35,7 +37,7 @@ export async function getTodayStock(symbol) {
         d.setHours(d.getHours() - 24);
         d = getDateString(d);
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${d}/${getDateString(new Date())}?adjusted=true&sort=desc&apiKey=${polygonKey}`;
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${d}/${getDateString(new Date())}?adjusted=true&sort=desc&apiKey=${jpolygonKey}`;
 
         let resp = await fetch(url);
         let data = await resp.json();

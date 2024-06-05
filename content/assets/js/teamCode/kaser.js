@@ -1,6 +1,5 @@
 import {getHoliday, getMarketNews, getMarketStatus} from "./API/apidata.mjs";
 
-
 let status = await getMarketStatus();
 let holiday = await getHoliday();
 console.log(holiday);
@@ -31,6 +30,7 @@ try
 {
     console.log('is ned wichtig');
 }
+
 async function info() {
     const news = await getMarketNews();
     let newsContainer = document.getElementById("marketNews");
