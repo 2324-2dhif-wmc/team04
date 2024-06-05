@@ -7,6 +7,7 @@ const table = document.getElementsByTagName("depotTable");
 let user = JSON.parse(localStorage.getItem('currentUser'));
 let fixedUser;
 let flag = false;
+console.log(0)
 await getUser(user.email, (error, user) => {
     if(error)
     {
@@ -18,6 +19,7 @@ await getUser(user.email, (error, user) => {
 while (!flag) {
     await new Promise(resolve => setTimeout(resolve, 100));
 }
+console.log(1)
 
 async function buildTable() {
     let money = document.getElementById("wert");
@@ -25,6 +27,7 @@ async function buildTable() {
     money.innerText = "Money: " + fixedUser.money.toFixed(2) + " USD";
     let table = document.getElementById("depotTable");
     let n = fixedUser.stocks.length;
+    console.log(2)
     for (let i = 0; i < n; i++) {
         let symbol = fixedUser.stocks[i].symbol;
         let val = fixedUser.stocks[i].price;
@@ -33,8 +36,9 @@ async function buildTable() {
         await getQuote(symbol).then(stock => {
             actualValue = stock.currentStock;
         });
+        console.log(3)
 
-        let imagePath="../content/assets/images/icon/market-value/trends-down-icon.png";
+        let imagePath="../content/assets/images/icon/market-value/trends-down-icon.png";cd
         if (val <= actualValue) {
             imagePath = "../content/assets/images/icon/market-value/trends-up-icon.png"
         }
