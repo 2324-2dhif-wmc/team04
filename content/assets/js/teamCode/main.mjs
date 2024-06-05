@@ -27,9 +27,14 @@ localStorage.setItem('currentUser', JSON.stringify(fixedUser));
 
 let status = await getMarketStatus();
 let holiday = await getHoliday();
+console.log(holiday);
 let hoday = "no Holiday";
 if (status.holiday !== null) {
     hoday = status.holiday;
+}
+let sesssion = status.session;
+if (status.session === null){
+    sesssion = `no Market`
 }
 
 let open = "Open";
@@ -41,12 +46,11 @@ table.innerHTML = `
     <td>US Market</td>
     <td>${hoday}</td>
     <td>${open}</td>
-    <td>${status.session}</td>
+    <td>${sesssion}</td>
     <td>Amerika, New-York</td>
 `
 async function info() {
     const news = await getMarketNews();
-    console.log(news);
     let newsContainer = document.getElementById("marketNews");
     news.forEach((newsItem) => {
         let newsElement = document.createElement("div");

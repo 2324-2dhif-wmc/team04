@@ -58,8 +58,8 @@ footer .social-links a {
 
 .back-to-top {
     position: fixed;
-    bottom: 18%;
-    left: 50%;
+    bottom: 3%;
+    left: 96%;
     transform: translateX(-50%);
     display: none;
     width: 4rem;
