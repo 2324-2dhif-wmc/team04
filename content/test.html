@@ -1,301 +1,606 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tradingtrainer Homepage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        header nav ul li {
-            margin: 0 15px;
-        }
-
-        header nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .hero {
-            background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
-            color: #fff;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        .hero .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h2 {
-            font-size: 36px;
-            margin: 0 0 10px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin: 0 0 20px;
-        }
-
-        .hero .cta-button {
-            background: #ff6347;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .about, .courses, .resources, .contact, .marketStatsSection {
-            text-align: center;
-        }
-
-        .course-list, .resource-list {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .course, .resource {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 5px;
-            width: 30%;
-        }
-
-        .contact form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .contact form label {
-            margin: 10px 0 5px;
-        }
-
-        .contact form input, .contact form textarea {
-            width: 100%;
-            max-width: 500px;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .contact form button {
-            padding: 10px 20px;
-            background: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        footer .social-links {
-            margin: 10px 0;
-        }
-
-        footer .social-links a {
-            color: #fff;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        #marketStats table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        #marketStats th, #marketStats td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        #marketStats th {
-            background-color: #f4f4f4;
-        }
-
-        #marketStats tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        #marketStats tr:hover {
-            background-color: #f1f1f1;
-        }
-
-
-    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Depot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../content/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../content/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../content/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="../content/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../content/assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="../content/assets/css/typography.css">
+    <link rel="stylesheet" href="../content/assets/css/default-css.css">
+    <link rel="stylesheet" href="../content/assets/css/styles.css">
+    <link rel="stylesheet" href="../content/assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="../style/mainstyle.css">
 </head>
-<body>
-<header>
-    <div class="container">
-        <h1>Tradingtrainer</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#courses">Kurse</a></li>
-                <li><a href="#resources">Ressourcen</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
 
-<section id="home" class="hero">
-    <div class="container">
-        <h2>Erreiche deine Trading-Ziele</h2>
-        <p>Lerne von den Besten und werde ein erfolgreicher Trader.</p>
-        <a href="#courses" class="cta-button">Jetzt starten</a>
-    </div>
-</section>
+<body class="body-bg">
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- main wrapper start -->
+<div class="horizontal-main-wrapper">
+    <!-- main header area start -->
+    <div class="mainheader-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3" style="width: 50%">
+                    <div class="logo">
+                        <a href="mainpage.html" class="head" style="white-space: nowrap;">Trading-Trainer</a>
+                    </div>
+                </div>
 
-<section id="about" class="about">
-    <div class="container">
-        <h2>Über uns</h2>
-        <p>Unsere Mission ist es, dir die besten Trading-Strategien beizubringen, damit du auf dem Markt erfolgreich sein kannst.</p>
-    </div>
-</section>
+                <!-- profile info & task notification -->
+                <div class="col-md-9 clearfix text-right">
 
-<section id="courses" class="courses">
-    <div class="container">
-        <h2>Kurse</h2>
-        <div class="course-list">
-            <div class="course">
-                <h3>Einführung in den Handel</h3>
-                <p>Lerne die Grundlagen des Tradings und starte deine Reise.</p>
-            </div>
-            <div class="course">
-                <h3>Fortgeschrittene Strategien</h3>
-                <p>Vertiefe dein Wissen mit fortgeschrittenen Handelsstrategien.</p>
-            </div>
-            <div class="course">
-                <h3>Live-Trading Sessions</h3>
-                <p>Erlebe den Handel in Echtzeit mit unseren Experten.</p>
+                    <div class="clearfix d-md-inline-block d-block">
+                        <div class="user-profile m-0">
+                            <img class="avatar user-thumb" src="../pics/OIP.jpg" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown" id="Account"><i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="mainpage.html">Home</a>
+                                <a class="dropdown-item" href="Market.html">Market</a>
+                                <a class="dropdown-item" href="depot.html">Depot</a>
+                                <a class="dropdown-item" href="AboutUs.html">About Us</a>
+                                <a class="dropdown-item" href="loginpage.html">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
 
-<section id="resources" class="resources">
-    <div class="container">
-        <h2>Ressourcen</h2>
-        <div class="resource-list">
-            <div class="resource">
-                <h3>Blog</h3>
-                <p>Regelmäßige Artikel zu Trading-Tipps und Marktanalysen.</p>
+
+    <div class="main-content-inner">
+        <!-- sales report area start -->
+        <div class="sales-report-area mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-report mb-xs-30">
+                        <div class="s-report-inner pr--20 pt--30 mb-3">
+                            <div class="icon"><i class="fa fa-btc"></i></div>
+                            <div class="s-report-title d-flex justify-content-between">
+                                <h4 class="header-title mb-0">Bitcoin</h4>
+                                <p>24 H</p>
+                            </div>
+                            <div class="d-flex justify-content-between pb-2">
+                                <h2>$ 4567809,987</h2>
+                                <span>- 45.87</span>
+                            </div>
+                        </div>
+                        <canvas id="coin_sales1" height="100"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-report mb-xs-30">
+                        <div class="s-report-inner pr--20 pt--30 mb-3">
+                            <div class="icon"><i class="fa fa-btc"></i></div>
+                            <div class="s-report-title d-flex justify-content-between">
+                                <h4 class="header-title mb-0">Bitcoin Dash</h4>
+                                <p>24 H</p>
+                            </div>
+                            <div class="d-flex justify-content-between pb-2">
+                                <h2>$ 4567809,987</h2>
+                                <span>- 45.87</span>
+                            </div>
+                        </div>
+                        <canvas id="coin_sales2" height="100"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-report">
+                        <div class="s-report-inner pr--20 pt--30 mb-3">
+                            <div class="icon"><i class="fa fa-eur"></i></div>
+                            <div class="s-report-title d-flex justify-content-between">
+                                <h4 class="header-title mb-0">Euthorium</h4>
+                                <p>24 H</p>
+                            </div>
+                            <div class="d-flex justify-content-between pb-2">
+                                <h2>$ 4567809,987</h2>
+                                <span>- 45.87</span>
+                            </div>
+                        </div>
+                        <canvas id="coin_sales3" height="100"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="resource">
-                <h3>Webinare</h3>
-                <p>Live-Webinare und Workshops mit unseren Experten.</p>
+        </div>
+        <!-- sales report area end -->
+        <!-- overview area start -->
+        <div class="row">
+            <div class="col-xl-9 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="header-title mb-0">Overview</h4>
+                            <label>
+                                <select class="custome-select border-0 pr-3">
+                                    <option selected>Last 24 Hours</option>
+                                    <option value="0">01 July 2018</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div id="verview-shart"></div>
+                    </div>
+                </div>
             </div>
-            <div class="resource">
-                <h3>Bücher und E-Books</h3>
-                <p>Empfohlene Lektüre für Trader aller Niveaus.</p>
+            <div class="col-xl-3 col-lg-4 coin-distribution">
+                <div class="card h-full">
+                    <div class="card-body">
+                        <h4 class="header-title mb-0">Coin Distribution</h4>
+                        <div id="coin_distribution"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- overview area end -->
+        <!-- market value area start -->
+        <div class="row mt-5 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex justify-content-between align-items-center">
+                            <h4 class="header-title mb-0">Market Value And Trends</h4>
+                        </div>
+                        <div class="market-status-table mt-4">
+                            <div class="table-responsive">
+                                <table class="dbkit-table">
+                                    <tr class="heading-td">
+                                        <td class="mv-icon">Logo</td>
+                                        <td class="coin-name">Coin Name</td>
+                                        <td class="buy">Buy</td>
+                                        <td class="sell">Sells</td>
+                                        <td class="trends">Trends</td>
+                                        <td class="attachments">Attachments</td>
+                                        <td class="stats-chart">Stats</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mv-icon"><img src="assets/images/icon/market-value/icon1.png" alt="icon">
+                                        </td>
+                                        <td class="coin-name">Dashcoin</td>
+                                        <td class="buy">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                        <td class="sell">20% <img src="assets/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                        <td class="trends"><img src="assets/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
+                                        <td class="attachments">$ 56746,857</td>
+                                        <td class="stats-chart">
+                                            <canvas id="mvaluechart"></canvas>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mv-icon">
+                                            <div class="mv-icon"><img src="assets/images/icon/market-value/icon2.png" alt="icon"></div>
+                                        </td>
+                                        <td class="coin-name">LiteCoin</td>
+                                        <td class="buy">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                        <td class="sell">20% <img src="assets/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                        <td class="trends"><img src="assets/images/icon/market-value/trends-down-icon.png" alt="icon"></td>
+                                        <td class="attachments">$ 56746,857</td>
+                                        <td class="stats-chart">
+                                            <canvas id="mvaluechart2"></canvas>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mv-icon">
+                                            <div class="mv-icon"><img src="assets/images/icon/market-value/icon3.png" alt="icon"></div>
+                                        </td>
+                                        <td class="coin-name">Euthorium</td>
+                                        <td class="buy">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                        <td class="sell">20% <img src="assets/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                        <td class="trends"><img src="assets/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
+                                        <td class="attachments">$ 56746,857</td>
+                                        <td class="stats-chart">
+                                            <canvas id="mvaluechart3"></canvas>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="mv-icon">
+                                            <div class="mv-icon"><img src="assets/images/icon/market-value/icon4.png" alt="icon"></div>
+                                        </td>
+                                        <td class="coin-name">Bitcoindash</td>
+                                        <td class="buy">30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
+                                        <td class="sell">20% <img src="assets/images/icon/market-value/triangle-up.png" alt="icon"></td>
+                                        <td class="trends"><img src="assets/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
+                                        <td class="attachments">$ 56746,857</td>
+                                        <td class="stats-chart">
+                                            <canvas id="mvaluechart4"></canvas>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- market value area end -->
+        <!-- row area start -->
+        <div class="row">
+            <!-- Live Crypto Price area start -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Live Crypto Price</h4>
+                        <div class="cripto-live mt-5">
+                            <ul>
+                                <li>
+                                    <div class="icon b">b</div> Bitcoin<span><i class="fa fa-long-arrow-up"></i>$876909.00</span></li>
+                                <li>
+                                    <div class="icon l">l</div> Litecoin<span><i class="fa fa-long-arrow-up"></i>$29780.00</span></li>
+                                <li>
+                                    <div class="icon d">d</div> Dashcoin<span><i class="fa fa-long-arrow-up"></i>$13276.00</span></li>
+                                <li>
+                                    <div class="icon b">b</div> Bitcoindash<span><i class="fa fa-long-arrow-down"></i>$5684.890</span></li>
+                                <li>
+                                    <div class="icon e">e</div> Euthorium<span><i class="fa fa-long-arrow-down"></i>$3890.98</span></li>
+                                <li>
+                                    <div class="icon t">b</div> Tcoin<span><i class="fa fa-long-arrow-up"></i>$750.789</span></li>
+                                <li>
+                                    <div class="icon b">b</div> Bitcoin<span><i class="fa fa-long-arrow-up"></i>$325.037</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Live Crypto Price area end -->
+            <!-- trading history area start -->
+            <div class="col-lg-8 mt-sm-30 mt-xs-30">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex justify-content-between align-items-center">
+                            <h4 class="header-title">Trading History</h4>
+                            <div class="trd-history-tabs">
+                                <ul class="nav" role="tablist">
+                                    <li>
+                                        <a class="active" data-toggle="tab" href="#buy_order" role="tab">Buy Order</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#sell_order" role="tab">Sell Order</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <label>
+                                <select class="custome-select border-0 pr-3">
+                                    <option selected>Last 24 Hours</option>
+                                    <option value="0">01 July 2018</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="trad-history mt-4">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="buy_order" role="tabpanel">
+                                    <div class="table-responsive">
+                                        <table class="dbkit-table">
+                                            <tr class="heading-td">
+                                                <td>Trading ID</td>
+                                                <td>Time</td>
+                                                <td>Status</td>
+                                                <td>Amount</td>
+                                                <td>Last Trade</td>
+                                            </tr>
+                                            <tr>
+                                                <td>78211</td>
+                                                <td>4.00 AM</td>
+                                                <td>Pending</td>
+                                                <td>$758.90</td>
+                                                <td>$05245.090</td>
+                                            </tr>
+                                            <tr>
+                                                <td>782782</td>
+                                                <td>4.00 AM</td>
+                                                <td>Pending</td>
+                                                <td>$77878.90</td>
+                                                <td>$7778.090</td>
+                                            </tr>
+                                            <tr>
+                                                <td>89675978</td>
+                                                <td>4.00 AM</td>
+                                                <td>Pending</td>
+                                                <td>$0768.90</td>
+                                                <td>$0945.090</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="sell_order" role="tabpanel">
+                                    <div class="table-responsive">
+                                        <table class="dbkit-table">
+                                            <tr class="heading-td">
+                                                <td>Trading ID</td>
+                                                <td>Time</td>
+                                                <td>Status</td>
+                                                <td>Amount</td>
+                                                <td>Last Trade</td>
+                                            </tr>
+                                            <tr>
+                                                <td>8964978</td>
+                                                <td>4.00 AM</td>
+                                                <td>Pending</td>
+                                                <td>$445.90</td>
+                                                <td>$094545.090</td>
+                                            </tr>
+                                            <tr>
+                                                <td>89675978</td>
+                                                <td>4.00 AM</td>
+                                                <td>Pending</td>
+                                                <td>$78.90</td>
+                                                <td>$074852945.090</td>
+                                            </tr>
+                                            <tr>
+                                                <td>78527878</td>
+                                                <td>4.00 AM</td>
+                                                <td>Pending</td>
+                                                <td>$0768.90</td>
+                                                <td>$65465.090</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- trading history area end -->
+        </div>
+        <!-- row area end -->
+        <div class="row mt-5">
+            <!-- latest news area start -->
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Latest News</h4>
+                        <div class="letest-news mt-5">
+                            <div class="single-post mb-xs-40 mb-sm-40">
+                                <div class="lts-thumb">
+                                    <img src="assets/images/blog/post-thumb1.jpg" alt="post thumb">
+                                </div>
+                                <div class="lts-content">
+                                    <span>Admin Post</span>
+                                    <h2><a href="blog.html">Sed ut perspiciatis unde omnis iste.</a></h2>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some...</p>
+                                </div>
+                            </div>
+                            <div class="single-post">
+                                <div class="lts-thumb">
+                                    <img src="assets/images/blog/post-thumb2.jpg" alt="post thumb">
+                                </div>
+                                <div class="lts-content">
+                                    <span>Admin Post</span>
+                                    <h2><a href="blog.html">Sed ut perspiciatis unde omnis iste.</a></h2>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- latest news area end -->
+        </div>
+        <!-- row area start-->
+    </div>
+</div>
+<!-- main content area end -->
+</div>
+<!-- page container area end -->
+<!-- offset area start -->
+<div class="offset-area">
+    <div class="offset-close"><i class="ti-close"></i></div>
+    <ul class="nav offset-menu-tab">
+        <li><a class="active" data-toggle="tab" href="#activity">Activity</a></li>
+        <li><a data-toggle="tab" href="#settings">Settings</a></li>
+    </ul>
+    <div class="offset-content tab-content">
+        <div id="activity" class="tab-pane fade in show active">
+            <div class="recent-activity">
+                <div class="timeline-task">
+                    <div class="icon bg1">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Added</h4>
+                        <span class="time"><i class="ti-time"></i>7 Minutes Ago</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>You missed you Password!</h4>
+                        <span class="time"><i class="ti-time"></i>09:20 Am</span>
+                    </div>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="fa fa-bomb"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Member waiting for you Attention</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="ti-signal"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>You Added Kaji Patha few minutes ago</h4>
+                        <span class="time"><i class="ti-time"></i>01 minutes ago</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg1">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Ratul Hamba sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Hello sir , where are you, i am egerly waiting for you.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg2">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="fa fa-bomb"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+                <div class="timeline-task">
+                    <div class="icon bg3">
+                        <i class="ti-signal"></i>
+                    </div>
+                    <div class="tm-title">
+                        <h4>Rashed sent you an email</h4>
+                        <span class="time"><i class="ti-time"></i>09:35</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="settings" class="tab-pane fade">
+            <div class="offset-settings">
+                <h4>General Settings</h4>
+                <div class="settings-list">
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Notifications</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch1" />
+                                <label for="switch1">Toggle</label>
+                            </div>
+                        </div>
+                        <p>Keep it 'On' When you want to get all the notification.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Show recent activity</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch2" />
+                                <label for="switch2">Toggle</label>
+                            </div>
+                        </div>
+                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Show your emails</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch3" />
+                                <label for="switch3">Toggle</label>
+                            </div>
+                        </div>
+                        <p>Show email so that easily find you.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Show Task statistics</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch4" />
+                                <label for="switch4">Toggle</label>
+                            </div>
+                        </div>
+                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
+                    </div>
+                    <div class="s-settings">
+                        <div class="s-sw-title">
+                            <h5>Notifications</h5>
+                            <div class="s-swtich">
+                                <input type="checkbox" id="switch5" />
+                                <label for="switch5">Toggle</label>
+                            </div>
+                        </div>
+                        <p>Use checkboxes when looking for yes or no answers.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- offset area end -->
+<!-- jquery latest version -->
+<script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
+<script src="assets/js/templateCode/popper.min.js"></script>
+<script src="assets/js/templateCode/bootstrap.min.js"></script>
+<script src="assets/js/templateCode/owl.carousel.min.js"></script>
+<script src="assets/js/templateCode/metisMenu.min.js"></script>
+<script src="assets/js/templateCode/jquery.slimscroll.min.js"></script>
+<script src="assets/js/templateCode/jquery.slicknav.min.js"></script>
 
-<section id="contact" class="contact">
-    <div class="container">
-        <h2>Kontakt</h2>
-        <form action="#">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Nachricht:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Absenden</button>
-        </form>
-    </div>
-</section>
-<section id="marketStatsSection">
-    <div class="container">
-        <h2>Market Status</h2>
-        <div id="marketStats">
-            <table>
-                <thead>
-                <tr>
-                    <th>Exchange</th>
-                    <th>Holiday</th>
-                    <th>Open/Closed</th>
-                    <th>Market Session</th>
-                    <th>Timezone</th>
-                    <th>Timestamp</th>
-                </tr>
-                </thead>
-                <tbody id="marketStatsBody">
-                <!-- Data will be inserted here -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2024 Tradingtrainer. Alle Rechte vorbehalten.</p>
-        <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">LinkedIn</a>
-        </div>
-    </div>
-</footer>
-
+<!-- start chart js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<!-- start highcharts js -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<!-- start zingchart js -->
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+<!-- all line chart activation -->
+<script src="assets/js/templateCode/line-chart.js"></script>
+<!-- all pie chart -->
+<script src="assets/js/templateCode/pie-chart.js"></script>
+<!-- others plugins -->
+<script src="assets/js/templateCode/plugins.js"></script>
+<script src="assets/js/templateCode/scripts.js"></script>
+<script src="../content/assets/js/teamCode/main.mjs" type="module"></script>
 </body>
+
 </html>
