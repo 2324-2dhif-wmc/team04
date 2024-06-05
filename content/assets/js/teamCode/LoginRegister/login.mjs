@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         localStorage.setItem('currentUser', JSON.stringify(user));
     });
-
+    
     function checkUser(data) {
         const serverUrl = 'http://localhost:3000/users';
 

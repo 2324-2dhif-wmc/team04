@@ -1,5 +1,3 @@
-
-
 export function getDateString(date)
 {
     let year = date.getFullYear();

@@ -13,14 +13,8 @@
       "name": "test",
       "email": "test@gmail.com",
       "password": "test",
-      "money": 48048.450000000004,
-      "stocks": [
-        {
-          "symbol": "AAPL",
-          "price": 194.99,
-          "amount": 10
-        }
-      ]
+      "money": 47853.340000000004,
+      "stocks": []
     },
     {
       "id": "a5ba",
@@ -32,7 +26,7 @@
         {
           "symbol": "MSFT",
           "price": 416.44,
-          "amount": "34"
+          "amount": 34
         }
       ]
     }
