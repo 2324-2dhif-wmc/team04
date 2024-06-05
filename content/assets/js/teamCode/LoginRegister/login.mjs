@@ -1,7 +1,9 @@
+import {getUser} from "../ServerClient/serverClient.mjs";
+
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector('form');
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', async function (event) {
         event.preventDefault();
 
         const email = document.getElementById('email').value;
@@ -12,11 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
             email: email,
             password: password
         };
-
-        localStorage.setItem('currentUser', JSON.stringify(userData));
-
         // Überprüfung des Benutzers
         checkUser(userData);
+
+        let user = await getUser(userData.email);
+
+        localStorage.setItem('currentUser', JSON.stringify(user));
     });
 
     function checkUser(data) {
