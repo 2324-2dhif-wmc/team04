@@ -2,17 +2,14 @@ import {getRange, getTodayStock} from "../API/apidata.mjs";
 
 if ($('#price').length) {
     let range = await getRange(window.location.search.split("=")[1]);
-    let today = await getTodayStock(window.location.search.split("=")[1]);
 
-    var chartData = range;
-    console.log(chartData);
     var chart = AmCharts.makeChart("price", {
         "type": "serial",
         "theme": "light",
         "marginRight": 20,
         "autoMarginOffset": 20,
         "marginTop": 7,
-        "dataProvider": chartData,
+        "dataProvider": range,
         "valueAxes": [{
             "axisAlpha": 0.2,
             "dashLength": 1,
