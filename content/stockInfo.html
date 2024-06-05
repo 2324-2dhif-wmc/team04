@@ -1,13 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Stock Info</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!doctype html>
+<html class="no-js" lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Stock Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../content/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../content/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../content/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../content/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="../content/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../content/assets/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="../content/assets/css/typography.css">
+    <link rel="stylesheet" href="../content/assets/css/default-css.css">
+    <link rel="stylesheet" href="../content/assets/css/styles.css">
+    <link rel="stylesheet" href="../content/assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="../content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="../style/mainstyle.css">
     <style>
         #news {
             overflow-y: scroll;
+            width: 70%;
+            height: 90vh;
+            border: 1px solid #dee2e6;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            margin-left: 15%;
         }
         .c {
             display: flex;
@@ -19,53 +42,121 @@
             font-size: 3rem; /* Sehr große Schriftgröße */
             text-align: center; /* Text zentrieren (horizontal) */
         }
+        .content {
+            text-align: center;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script src="assets/js/teamCode/info-manager.mjs" defer type="module"></script>
     <script src="assets/js/teamCode/charttest/chart.mjs" defer type="module"></script>
 </head>
-<body>
 
-
-
-
-
-<div class="container my-4">
-    <h1 id="stock-symbol" class="display-4 text-center mb-4"></h1>
-    <h2>Latest News:</h2>
-    <div id="news" class="row border p-3 bg-light" style="width: auto; height: 70vh">
-    </div>
-    <div style="margin-top: 5%">
-        <h2>Course:</h2>
-        <div id="price" style="width: 100%; height: 400px;"></div>
-        <div id="today" style="width: 100%; height: 400px;"></div>
-    </div>
-
-    <div style="margin-top: 5%" class = "c">
-        <div class="big-text">Current Quote:</div>
-        <div id="quote" class = "big-text"></div>
-    </div>
+<body class="body-bg">
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
 </div>
-
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <form id="numberForm" class="form-inline">
-                <div class="form-group mb-2">
-                    <label for="numberInput" class="sr-only">How much do you want to buy?</label>
-                    <input type="number" class="form-control" id="numberInput" placeholder="amount" style="width: 100px;">
+<!-- preloader area end -->
+<!-- main wrapper start -->
+<div class="horizontal-main-wrapper">
+    <!-- main header area start -->
+    <div class="mainheader-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3" style="width: 50%">
+                    <div class="logo">
+                        <a href="mainpage.html" class="head" style="white-space: nowrap;">Trading-Trainer</a>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2 ml-2">Buy</button>
-            </form>
+
+                <!-- profile info & task notification -->
+                <div class="col-md-9 clearfix text-right">
+
+                    <div class="clearfix d-md-inline-block d-block">
+                        <div class="user-profile m-0">
+                            <img class="avatar user-thumb" src="../pics/OIP.jpg" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown" id="Account"><i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="mainpage.html">Home</a>
+                                <a class="dropdown-item" href="Market.html">Market</a>
+                                <a class="dropdown-item" href="depot.html">Depot</a>
+                                <a class="dropdown-item" href="AboutUs.html">About Us</a>
+                                <a class="dropdown-item" href="loginpage.html">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- main header area end -->
+    <!-- page title area end -->
+    <div class="main-content-inner">
+        <div class="container my-4">
+            <h1 id="stock-symbol" class="display-4 text-center mb-4"></h1>
+
+            <div style="margin-top: 5%">
+                <h2>Course:</h2>
+                <div id="price" style="width: 100%; height: 400px;"></div>
+                <div id="today" style="width: 100%; height: 400px;"></div>
+            </div>
+
+            <div style="margin-top: 5%" class = "c">
+                <div class="big-text">Current Quote:</div>
+                <div id="quote" class = "big-text"></div>
+            </div>
+        </div>
+
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form id="numberForm" class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="numberInput" class="sr-only">How much do you want to buy?</label>
+                            <input type="number" class="form-control" id="numberInput" placeholder="amount" style="width: 100px;">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 ml-2">Buy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center">Latest News:</h2>
+        <div class="container d-flex">
+            <div id="news" class="row border p-3 bg-light">
+            </div>
+        </div>
+
+
+    </div>
+    <!-- main content area end -->
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2024 TradingTrainer - Team04.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                <a href="https://x.com/home" target="_blank">Twitter</a>
+                <a href="https://www.youtube.com/" target="_blank">Youtube</a>
+            </div>
+        </div>
+
+    </footer>
+    <!-- footer area end-->
 </div>
+<!-- main wrapper start -->
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- jquery latest version -->
+<script src="../content/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
+<script src="../content/assets/js/templateCode/popper.min.js"></script>
+<script src="../content/assets/js/templateCode/bootstrap.min.js"></script>
+<script src="../content/assets/js/templateCode/owl.carousel.min.js"></script>
+<script src="../content/assets/js/templateCode/metisMenu.min.js"></script>
+<script src="../content/assets/js/templateCode/jquery.slimscroll.min.js"></script>
+<script src="../content/assets/js/templateCode/jquery.slicknav.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -79,7 +170,6 @@
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-
 <!-- all line chart activation -->
 <script src="../content/assets/js/templateCode/line-chart.js"></script>
 <!-- all pie chart -->
@@ -88,7 +178,10 @@
 <script src="../content/assets/js/templateCode/bar-chart.js"></script>
 <!-- all map chart -->
 <script src="../content/assets/js/templateCode/maps.js"></script>
-<!-- zing chart -->
-<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<!-- others plugins -->
+<script src="../content/assets/js/templateCode/plugins.js"></script>
+<script src="../content/assets/js/templateCode/scripts.js"></script>
+<script src="assets/js/teamCode/main.mjs" type="module"></script>
 </body>
+
 </html>
