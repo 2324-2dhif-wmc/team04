@@ -57,6 +57,12 @@ document.getElementById('numberForm').addEventListener('submit', function(event)
     event.preventDefault();
 
     const numberInput = document.getElementById('numberInput').value;
+
+    console.log (info.currentStock);
+    if(fixedUser.money - parseInt(numberInput) * info.currentStock < 0){
+        alert("You do not have enough money");
+        return false;
+    }
     buyStock(fixedUser, info, numberInput).then(() => alert("Stock bought!"));
 
 });

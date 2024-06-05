@@ -5,7 +5,7 @@
       "name": "Manuel",
       "email": "manuel.gross3004@gmail.com",
       "password": "asd",
-      "money": 49023.4,
+      "money": 50000,
       "stocks": []
     },
     {
@@ -33,20 +33,6 @@
           "symbol": "MSFT",
           "price": 416.44,
           "amount": "34"
-        }
-      ]
-    },
-    {
-      "id": "a1e7",
-      "email": "j.schwendtbauer@gmail.com",
-      "password": "1234",
-      "name": "Julian",
-      "money": 49023.4,
-      "stocks": [
-        {
-          "symbol": "AAPL",
-          "price": 195.32,
-          "amount": "5"
         }
       ]
     }

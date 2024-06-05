@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                window.location.href = '../../../../login.html';
+                window.location.href = 'http://localhost:63342/ProjektSS/content/loginpage.html';
             })
             .catch((error) => {
                 console.error('Error:', error);
