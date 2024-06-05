@@ -4,26 +4,11 @@ import {getHoliday, getMarketNews, getMarketStatus} from "./API/apidata.mjs";
 
 
 let user = JSON.parse(localStorage.getItem('currentUser'));
-let fixedUser;
-let flag = false;
-
-await getUser(user.email, (error, user) => {
-    if(error)
-    {
-        console.log(error);
-    }
-    fixedUser = user;
-    flag = true;
-});
-
-while (!flag) {
-    await new Promise(resolve => setTimeout(resolve, 100));
-}
 
 let x = document.getElementById("Account");
-x.innerHTML = fixedUser.name;
+x.innerHTML = user.name;
 
-localStorage.setItem('currentUser', JSON.stringify(fixedUser));
+localStorage.setItem('currentUser', JSON.stringify(user));
 
 let status = await getMarketStatus();
 let holiday = await getHoliday();
@@ -46,7 +31,6 @@ table.innerHTML = `
 `
 async function info() {
     const news = await getMarketNews();
-    console.log(news);
     let newsContainer = document.getElementById("marketNews");
     news.forEach((newsItem) => {
         let newsElement = document.createElement("div");

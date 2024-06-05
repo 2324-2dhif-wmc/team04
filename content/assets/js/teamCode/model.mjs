@@ -1,4 +1,4 @@
-import {getStockName} from "./ServerClient/serverClient.mjs";
+
 
 export function getDateString(date)
 {
@@ -10,29 +10,13 @@ export function getDateString(date)
 
 export class Stock
 {
-    constructor(symbol, name, currentStock, highPrice, lowPrice, openPrice, timestamp)
+    constructor(symbol, name, currentPrice, timestamp, amount = 0)
     {
         this.symbol = symbol;
         this.name = name;
-        this.currentStock = currentStock;
-        this.highPrice = highPrice;
-        this.lowPrice = lowPrice;
-        this.openPrice = openPrice;
+        this.currentPrice = currentPrice;
         this.time = timestamp;
-    }
-}
-
-export class News
-{
-    constructor(symbol, time, headline, img, src, summary, url)
-    {
-        this.symbol = symbol;
-        this.time = time;
-        this.headline = headline;
-        this.img = img;
-        this.src = src;
-        this.summary = summary;
-        this.url = url;
+        this.amount = amount;
     }
 }
 
@@ -40,19 +24,19 @@ export class User
 {
     constructor(id, email, password, name, money, stocks) {
         this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.name = name;
-        this.money = 0;
-        this.stocks = [];
         this.money = money;
         this.stocks = stocks;
     }
 
     addStock(stock)
     {
-        if(stock)
-        {
+        if(!this.stocks) {
+            this.stocks = [];
+        }
+        if(stock) {
             this.stocks.push(stock);
             return true;
         }
@@ -61,6 +45,8 @@ export class User
 
     removeStock(symbol)
     {
-        return this.stocks.filter(s => s.symbol === symbol);
+        let rmStock = this.stocks.filter(s => s.symbol === symbol);
+        this.stocks = this.stocks.filter(s => s.symbol !== symbol);
+        return rmStock;
     }
 }

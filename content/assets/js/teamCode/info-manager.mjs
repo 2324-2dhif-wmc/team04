@@ -1,5 +1,5 @@
-import { getStockNews, getQuote } from "./API/apidata.mjs";
-import {buyStock, getUser} from "./ServerClient/serverClient.mjs";
+import {getQuote, getStockNews} from "./API/apidata.mjs";
+import {buyStock} from "./ServerClient/serverClient.mjs";
 
 let symbol = window.location.search.split("=")[1];
 
@@ -25,38 +25,21 @@ export async function buildInfo() {
 }
 
 buildInfo();
-let info;
 
-let user = JSON.parse(localStorage.getItem('currentUser'));
-let fixedUser;
-let flag = false;
+let info = await getQuote(symbol);
+let user = JSON.parse(localStorage.getItem("currentUser"));
 
-await getUser(user.email, (error, user) => {
-    if(error)
-    {
-        console.log(error);
-    }
-    fixedUser = user;
-    flag = true;
-});
+document.getElementById("quote").innerText = info.currentPrice;
 
-while (!flag) {
-    await new Promise(resolve => setTimeout(resolve, 100));
-}
-
-
-getQuote(symbol).then(stock => {
-    let element = document.getElementById("quote");
-    element.innerHTML = stock.currentStock + " USD";
-    info = stock;
-});
-
-
-
-document.getElementById('numberForm').addEventListener('submit', function(event) {
+document.getElementById('numberForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const numberInput = document.getElementById('numberInput').value;
-    buyStock(fixedUser, info, numberInput).then(() => alert("Stock bought!"));
+    info.amount = document.getElementById('numberInput').value;
 
+    if(user.money - parseInt(info.amount) * info.currentPrice < 0) {
+        alert("You do not have enough money");
+        return false;
+    }
+
+    await buyStock(info).then(() => alert("Stock bought!"));
 });

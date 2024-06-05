@@ -67,8 +67,6 @@ if ($('#price').length) {
 if ($('#today').length) {
     let [str, stock] = await getTodayStock(window.location.search.split("=")[1]);
 
-    console.log(str);
-    console.log(stock);
     var myConfig = {
         "type": "line",
 
