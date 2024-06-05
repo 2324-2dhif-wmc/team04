@@ -20,7 +20,7 @@ export class Stock
 
 export class User
 {
-    constructor(id, email, password, name, money, stocks) {
+    constructor(id, name, email, password, money, stocks) {
         this.id = id;
         this.name = name;
         this.email = email;

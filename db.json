@@ -11,10 +11,17 @@
     {
       "id": "1234",
       "name": "test",
-      "email": "test@gmail.com",
-      "password": "test",
-      "money": 47853.340000000004,
-      "stocks": []
+      "email": "test",
+      "password": "test@gmail.com",
+      "money": 8615.340000000004,
+      "stocks": [
+        {
+          "symbol": "AAPL",
+          "currentPrice": 196.19,
+          "time": 1717613408,
+          "amount": "200"
+        }
+      ]
     },
     {
       "id": "a5ba",
@@ -23,16 +30,6 @@
       "password": "Hekjegyok9",
       "money": 26431.862200000003,
       "stocks": [
-        {
-          "symbol": "MSFT",
-          "price": 416.44,
-          "amount": "34"
-        },
-        {
-          "symbol": "NVDA",
-          "price": 1166,
-          "amount": "7"
-        },
         {
           "symbol": "HD",
           "currentPrice": 329.5814,

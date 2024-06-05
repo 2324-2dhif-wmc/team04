@@ -1,49 +1,30 @@
-import {getUser} from "./ServerClient/serverClient.mjs";
+import {getUser, updateUser, sellStock} from "./ServerClient/serverClient.mjs";
 import {getQuote} from "./API/apidata.mjs";
+import {User} from "./model.mjs";
 
 const table = document.getElementsByTagName("depotTable");
-
-
-let user = JSON.parse(localStorage.getItem('currentUser'));
-let fixedUser;
-let flag = false;
-console.log(0)
-await getUser(user.email, (error, user) => {
-    if(error)
-    {
-        console.log(error);
-    }
-    fixedUser = user;
-    flag = true;
-});
-while (!flag) {
-    await new Promise(resolve => setTimeout(resolve, 100));
-}
-console.log(1)
+let d = JSON.parse(localStorage.getItem('currentUser'));
+let user = new User(d.id, d.name, d.email, d.password, d.money, d.stocks);
 
 async function buildTable() {
     let money = document.getElementById("wert");
     let info;
-    money.innerText = "Money: " + fixedUser.money.toFixed(2) + " USD";
+    money.innerText = "Money: " + user.money.toFixed(2) + " USD";
     let table = document.getElementById("depotTable");
-    let n = fixedUser.stocks.length;
-    console.log(2)
-    for (let i = 0; i < n; i++) {
-        let symbol = fixedUser.stocks[i].symbol;
-        let val = fixedUser.stocks[i].price;
+    let n = user.stocks.length;
 
-        let actualValue;
-        await getQuote(symbol).then(stock => {
-            actualValue = stock.currentStock;
-        });
-        console.log(3)
+    for (const stock of user.stocks) {
+        let symbol = stock.symbol;
+        let val = stock.currentPrice;
 
-        let imagePath="../content/assets/images/icon/market-value/trends-down-icon.png";cd
+        let quote = await getQuote(symbol);
+        let actualValue = quote.currentPrice;
+
+        let imagePath="../content/assets/images/icon/market-value/trends-down-icon.png";
         if (val <= actualValue) {
             imagePath = "../content/assets/images/icon/market-value/trends-up-icon.png"
         }
-        let winLose = actualValue - val;
-
+        let winLose = (actualValue - val) * stock.amount;
 
         let newRow = table.insertRow(-1);
         newRow.onclick = function () {
@@ -54,19 +35,15 @@ async function buildTable() {
         img.alt = "Dynamic Image";
         newRow.innerHTML = `
             <td>${symbol}</td>
-            <td>${fixedUser.stocks[i].amount}</td>
+            <td>${stock.amount}</td>
             <td>${val.toFixed(2)}</td>
             <td>${actualValue.toFixed(2)}</td>
             <td style="padding-left: 3%"><img src=${imagePath} alt="Impact"></td>
             <td>${winLose.toFixed(2)}</td>
-            <td><button class="btn btn-primary" onclick="sellStock()">Click Me</button></td>
+            <td><button class="btn btn-primary" onclick="sellStock('${stock}')">Click Me</button></td>
             `;
-
     }
 }
 
 buildTable();
 
-function sellStock(symbol){
-
-}

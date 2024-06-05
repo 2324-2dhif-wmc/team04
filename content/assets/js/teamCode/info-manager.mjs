@@ -31,13 +31,6 @@ let user = JSON.parse(localStorage.getItem("currentUser"));
 
 document.getElementById("quote").innerText = info.currentPrice;
 
-getQuote(symbol).then(stock => {
-    let element = document.getElementById("quote");
-    element.innerHTML = stock.currentPrice + " USD";
-    info = stock;
-});
-
-
 
 document.getElementById('numberForm').addEventListener('submit', async function(event) {
     event.preventDefault();

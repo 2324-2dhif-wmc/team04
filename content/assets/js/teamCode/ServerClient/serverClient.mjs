@@ -50,6 +50,7 @@ export async function buyStock(stock)
 
 export async function sellStock(stock)
 {
+    console.log(stock);
     let user = JSON.parse(localStorage.getItem('currentUser'));
     let oldStock = user.removeStock(stock.symbol);
     user.money += stock.currentPrice * oldStock.amount;
