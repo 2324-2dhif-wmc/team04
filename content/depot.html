@@ -23,8 +23,6 @@
     <script src="../content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <link rel="stylesheet" href="../style/mainstyle.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="assets/js/teamCode/info-manager.mjs" defer type="module"></script>
-    <script src="assets/js/teamCode/charttest/chart.mjs" defer type="module"></script>
 </head>
 
 <body class="body-bg">
@@ -73,30 +71,19 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex justify-content-between align-items-center">
-                            <h3 class="header-title mb-0">Depot</h3>
+                            <h3 class="header-title mb-0" id="wert"></h3>
                         </div>
                         <div class="market-status-table mt-4">
                             <div class="table-responsive">
                                 <table class="dbkit-table" id="depotTable">
                                     <tr class="heading-td">
                                         <td class="mv-icon">Symbol</td>
-                                        <td class="coin-name">Stock Name</td>
+                                        <td class="coin-name">Amount</td>
                                         <td class="buy">Purchase Value</td>
                                         <td class="sell">Actual Value</td>
                                         <td class="trends">Impact</td>
                                         <td class="attachments">Win/Lose</td>
                                         <td class="stats-chart"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mv-icon"><img src="assets/images/icon/market-value/icon1.png" alt="icon">
-                                        </td>
-                                        <td>Dashcoin</td>
-                                        <td>30% <img src="assets/images/icon/market-value/triangle-down.png" alt="icon"></td>
-                                        <td>20% <img src="assets/images/icon/market-value/triangle-up.png" alt="icon"></td>
-                                        <td><img src="assets/images/icon/market-value/trends-up-icon.png" alt="icon"></td>
-                                        <td >$ 56746,857</td>
-                                        <td >
-                                        </td>
                                     </tr>
 
                                 </table>
