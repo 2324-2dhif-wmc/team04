@@ -60,15 +60,17 @@ if ($('#price').length) {
     });
 }
 
-
 if ($('#today').length) {
-    let [str, stock] = await getTodayStock(window.location.search.split("=")[1]);
+    let [str, stocks] = await getTodayStock(window.location.search.split("=")[1]);
+
+    let min = Math.min(...stocks) - 0.5;
+    let max = Math.max(...stocks) + 0.5;
 
     var myConfig = {
         "type": "line",
 
         "scale-x": { //X-Axis
-            "labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
+            "labels": str,
             "label": {
                 "font-size": 14,
                 "offset-x": 0,
@@ -82,20 +84,30 @@ if ($('#today').length) {
                 "alpha": 1
             }
         },
+        "scale-y": {
+            "min-value": min, // Mindestwert der Y-Achse
+            "max-value": max,
+            "zooming": true
+        },
         "plot": { "aspect": "spline" },
         "series": [{
-            "values": [20, 25, 30, 35, 45, 40, 40, 35, 25, 17, 40, 50],
+            "values": stocks,
             "line-color": "#F0B41A",
-            "line-width": 5 ,// px
-            "marker": {
+            /* "dotted" | "dashed" */
+            "line-width": 5 /* in pixels */ ,
+            "marker": { /* Marker object */
                 "background-color": "#D79D3B",
-                "size": 5, // px
+                /* hexadecimal or RGB value */
+                "size": 5,
+                /* in pixels */
                 "border-color": "#D79D3B",
-            }}]
+                /* hexadecimal or RBG value */
+            }
+        }]
     };
 
     zingchart.render({
-        id: 'verview-shart',
+        id: 'today',
         data: myConfig,
         height: "100%",
         width: "100%"
