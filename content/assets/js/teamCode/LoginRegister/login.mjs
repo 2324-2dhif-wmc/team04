@@ -1,6 +1,8 @@
 import {getUser} from "../ServerClient/serverClient.mjs";
 
 document.addEventListener("DOMContentLoaded", function() {
+    localStorage.setItem("currentUser", "");
+
     const form = document.querySelector('form');
 
     form.addEventListener('submit', async function (event) {
