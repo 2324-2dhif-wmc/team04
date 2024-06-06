@@ -1,6 +1,13 @@
 import {getMonthRange} from "../API/apidata.mjs";
 import {getStockName, fetchStock} from "../ServerClient/serverClient.mjs";
 
+const colors = [
+    "#17e285", "#ff5733", "#ba55d3", "#3357ff", "#ff33a1",
+    "#ff4500", "#33fff5", "#ffae33", "#e217e2", "#2e8b57",
+    "#8b2e2e", "#2e8b8b", "#8b572e", "#a133ff", "#32cd32",
+    "#1e90ff", "#ff69b4", "#33ff57", "#ff6347", "#4682b4"
+];
+
 let names = [];
 let stocks = [];
 let data = [];
@@ -88,9 +95,9 @@ function getGraphs()
             "title": `${names[i]}`,
             "valueField": `${names[i]}`,
             "fillAlphas": 0,
-            "lineColor": "#31ef98",
+            "lineColor": colors[i],
             "lineThickness": 2,
-            "negativeLineColor": "#17e285",
+            "negativeLineColor": colors[i],
         });
     }
 }
