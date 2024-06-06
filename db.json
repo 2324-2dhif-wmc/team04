@@ -13,7 +13,7 @@
       "name": "test",
       "email": "test@gmail.com",
       "password": "test",
-      "money": 5677.290000000004,
+      "money": 50000,
       "stocks": [
         {
           "symbol": "AAPL",

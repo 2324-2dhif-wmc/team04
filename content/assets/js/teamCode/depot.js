@@ -5,6 +5,13 @@ import { User } from "./model.mjs";
 const table = document.getElementById("depotTable");
 let d = JSON.parse(localStorage.getItem('currentUser'));
 let user = new User(d.id, d.name, d.email, d.password, d.money, d.stocks);
+let stock;
+
+function handleButtonClick(){
+    let stringifiedStock = JSON.stringify(stock);
+    sellStock(stringifiedStock);
+}
+
 
 function umleiten(symbol) {
     const basisUrl = "../content/stockInfo.html?symbol=";
@@ -12,12 +19,14 @@ function umleiten(symbol) {
 }
 
 window.umleiten = umleiten;
+window.handleButtonClick = handleButtonClick;
+
 
 async function buildTable() {
     let money = document.getElementById("wert");
     money.innerText = "Money: " + user.money.toFixed(2) + " USD";
 
-    for (const stock of user.stocks) {
+    for (stock of user.stocks) {
         let symbol = stock.symbol;
         let val = stock.currentPrice;
 
@@ -40,7 +49,7 @@ async function buildTable() {
             <td style="padding-left: 3%"><img src="${imagePath}" alt="Impact"></td>
             <td>${winLose.toFixed(2)}</td>
             <td>
-                <button class="btn btn-primary" onclick="sellStock('${JSON.stringify(stock)}')">Sell</button>
+                <button class="btn btn-primary" onclick="handleButtonClick()">Sell</button>
             </td>
         `;
     }

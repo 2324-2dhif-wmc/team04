@@ -73,7 +73,9 @@ export async function buyStock(stock)
 export async function sellStock(stock)
 {
     let user = JSON.parse(localStorage.getItem('currentUser'));
-    let oldStock = user.removeStock(stock.symbol);
+    let current = new User(user.id, user.name, user.email, user.password, user.money, user.stocks);
+    let oldStock = current.removeStock(stock.symbol);
+    console.log(stock.currentPrice * oldStock.amount);
     user.money += stock.currentPrice * oldStock.amount;
 
     updateUser(user);
