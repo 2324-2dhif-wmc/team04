@@ -40,7 +40,7 @@
       "name": "Michael Oswald",
       "email": "oswaldmi2008@gmail.com",
       "password": "Hekjegyok9",
-      "money": 26431.862200000003,
+      "money": 1055.8022000000014,
       "stocks": [
         {
           "symbol": "HD",
@@ -53,6 +53,24 @@
           "currentPrice": 196.005,
           "time": 1717603193,
           "amount": "3"
+        },
+        {
+          "symbol": "MSFT",
+          "currentPrice": 424.01,
+          "time": 1717617601,
+          "amount": "4"
+        },
+        {
+          "symbol": "MSFT",
+          "currentPrice": 424.01,
+          "time": 1717617601,
+          "amount": "54"
+        },
+        {
+          "symbol": "AAPL",
+          "currentPrice": 195.87,
+          "time": 1717617601,
+          "amount": "4"
         }
       ]
     }

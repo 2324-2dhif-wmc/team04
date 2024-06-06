@@ -41,7 +41,7 @@ export async function getStockName(symbol)
 export async function buyStock(stock)
 {
     let us = JSON.parse(localStorage.getItem('currentUser'));
-    let user = new User(us.id, us.email, us.password, us.name, us.money, us.stocks);
+    let user = new User(us.id, us.name, us.email, us.password, us.money, us.stocks);
     user.addStock(stock);
     user.money -= stock.currentPrice * stock.amount;
 
