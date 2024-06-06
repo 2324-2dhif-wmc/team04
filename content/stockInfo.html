@@ -47,8 +47,16 @@
             font-size: 3rem;
             text-align: center;
         }
-        .content {
-            text-align: center;
+        .align-center {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 5%;
+        }
+        .input-button-group input {
+            width: 60%; /* Festgelegte Breite für das Eingabefeld */
+            margin-right: 10px;
         }
     </style>
 
@@ -113,17 +121,12 @@
 
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <form id="numberForm" class="form-inline">
-                        <div class="form-group mb-2">
-                            <label for="numberInput" class="sr-only">How much do you want to buy?</label>
-                            <input type="number" class="form-control" id="numberInput" placeholder="amount" style="width: 100px;">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2 ml-2">Buy</button>
-
+                <div class="col-12 align-center">
+                    <form class="form-inline" id="numberForm" style="margin-left: 20%">
+                        <input type="number" class="form-control" id="stockInput" placeholder="Stock">
+                        <button type="submit" class="btn btn-primary">Compare</button>
                     </form>
-
-                    <button id="comparer" class="btn btn-primary mb-2 ml-2" style="float: right; margin-top: -8%">Comparer</button>
+                    <button id="comparer" class="btn btn-primary" style="margin-right: 20%">Comparer</button>
                 </div>
             </div>
         </div>

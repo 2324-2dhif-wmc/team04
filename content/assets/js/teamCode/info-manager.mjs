@@ -32,7 +32,7 @@ let user = JSON.parse(localStorage.getItem("currentUser"));
 document.getElementById("quote").innerText = info.currentPrice;
 
 
-document.getElementById('numberForm').addEventListener('submit', async function(event) {
+    document.getElementById('numberForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     info.amount = document.getElementById('numberInput').value;

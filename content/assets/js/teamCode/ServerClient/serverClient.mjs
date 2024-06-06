@@ -45,8 +45,9 @@ export async function getStockName(symbol)
 
 export async function getStockSym(name)
 {
+    console.log(name);
     try {
-        let resp = await fetch(`${stockUrl}?name=${name}`)
+        let resp = await fetch(`${stockUrl}?name=${encodeURIComponent(name)}`);
         let data = await resp.json();
 
         if(!data) {

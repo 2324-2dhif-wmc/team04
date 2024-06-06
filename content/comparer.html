@@ -27,10 +27,26 @@
     <script src="assets/js/teamCode/charttest/comparechart.mjs" defer type="module"></script>
 
     <style>
-        .content {
-            text-align: center;
+        .align-center {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .input-button-group {
+            display: flex;
+            align-items: center;
+        }
+        .input-button-group input {
+            width: 60%; /* Festgelegte Breite für das Eingabefeld */
+            margin-right: 5%;
         }
     </style>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
 </head>
 
@@ -79,16 +95,15 @@
         <div class="container my-4">
             <div class="container mt-5">
                 <div class="row">
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="stockInput" placeholder="Stock">
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" id="button" class="btn btn-primary mb-3">Compare</button>
-                        <button id="button2" class="btn btn-primary mb-3" style="margin-left: 200%; margin-top: -40%">Zurück</button>
+                    <div class="col-12 align-center">
+                        <div class="input-button-group">
+                            <input type="email" class="form-control" id="stockInput" placeholder="Stock">
+                            <button type="submit" id="button" class="btn btn-primary">Compare</button>
+                        </div>
+                        <button class="btn btn-primary" onclick="goBack()">Back</button>
                     </div>
                 </div>
             </div>
-
             <div style="margin-top: 5%">
                 <div id="chart" style="width: 100%; height: 400px;"></div>
             </div>
