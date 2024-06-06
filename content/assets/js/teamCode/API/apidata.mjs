@@ -33,11 +33,13 @@ function formatTime(date) {
 
 export async function getTodayStock(symbol) {
     try {
-        let d = new Date();
-        d.setHours(d.getHours() - 24);
-        d = getDateString(d);
+        let from = new Date();
+        from.setDate(from.getDate() - 1);
+        from = getDateString(from);
+        let to = getDateString(new Date());
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${d}/${getDateString(new Date())}?adjusted=true&sort=desc&apiKey=${jpolygonKey}`;
+        //let url = `https://api.polygon.io/v2/aggs/ticker/AAPL/range/30/minute/${from}/${to}?adjusted=true&sort=asc&apiKey=${jpolygonKey}`;
+        let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/30/minute/2024-06-05/2024-06-06?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
 
         let resp = await fetch(url);
         let data = await resp.json();
@@ -46,7 +48,9 @@ export async function getTodayStock(symbol) {
         let stocks = [];
         for(let d of data.results)
         {
-            let str = formatTime(new  Date(d.t * 1000));
+            let str = formatTime(new Date(d.t));
+            console.log(str);
+            console.log(new Date(d.t));
             let stock = d.c;
             strings.push(str);
             stocks.push(stock);
