@@ -9,17 +9,19 @@ let button = document.getElementById("button");
 
 button.onclick = async function() {
     let input = document.getElementById("stockInput");
-    let stock = await fetchStock(input.value);
-    if (stock) {
-        names.push(stock);
-        let st = await getMonthRange(stock);
-        stocks.push(st);
-    }
-    input.innerText = "";
+    let stockName = await fetchStock(input.value);
+    await load(stockName);
+}
+
+async function load(name) {
+    names.push(name);
+    let st = await getMonthRange(name);
+    stocks.push(st);
+
     getDataProviderDate();
     getGraphs();
     Chart();
-};
+}
 
 function Chart()
 {
@@ -54,7 +56,9 @@ function Chart()
     }
 }
 
-Chart;
+let symbol = window.location.search.split("=")[1];
+let name = await getStockName(symbol);
+await load(name);
 
 function getDataProviderDate()
 {

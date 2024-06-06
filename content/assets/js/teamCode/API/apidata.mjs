@@ -34,7 +34,6 @@ export async function getMonthRange(name) {
         let to = getDateString(d);
 
         let symbol = await getStockSym(name);
-        console.log(symbol);
         let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${mipolygonKey}`;
 
         let resp = await fetch(url);

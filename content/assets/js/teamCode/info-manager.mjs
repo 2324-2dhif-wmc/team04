@@ -43,3 +43,10 @@ document.getElementById('numberForm').addEventListener('submit', async function(
     }
     await buyStock(info).then(() => alert("Stock bought!"));
 });
+
+
+let button = document.getElementById("comparer");
+button.addEventListener("click", async () => {
+    window.location.href = "../content/comparer.html?symbol=" + symbol;
+
+});
