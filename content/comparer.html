@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Stock Info</title>
+    <title>Comparer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../content/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../content/assets/css/font-awesome.min.css">
@@ -24,29 +24,9 @@
     <script src="../content/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <!-- self scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="assets/js/teamCode/info-manager.mjs" defer type="module"></script>
-    <script src="assets/js/teamCode/charttest/infochart.mjs" defer type="module"></script>
+    <script src="assets/js/teamCode/charttest/comparechart.mjs" defer type="module"></script>
 
     <style>
-        #news {
-            overflow-y: scroll;
-            width: 70%;
-            height: 90vh;
-            border: 1px solid #dee2e6;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            margin-left: 15%;
-        }
-        .c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20vh;
-        }
-        .big-text {
-            font-size: 3rem;
-            text-align: center;
-        }
         .content {
             text-align: center;
         }
@@ -92,64 +72,41 @@
             </div>
         </div>
     </div>
+
     <!-- main header area end -->
     <!-- page title area end -->
     <div class="main-content-inner">
         <div class="container my-4">
-            <h1 id="stock-symbol" class="display-4 text-center mb-4"></h1>
-
-            <div style="margin-top: 5%">
-                <h2>Course:</h2>
-                <div id="price" style="width: 100%; height: 400px;"></div>
-                <div id="today" style="width: 100%; height: 400px;"></div>
-            </div>
-
-            <div style="margin-top: 5%" class="c">
-                <div class="big-text">Current Quote:</div>
-                <div id="quote" class="big-text"></div>
-            </div>
-        </div>
-
-
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <form id="numberForm" class="form-inline">
-                        <div class="form-group mb-2">
-                            <label for="numberInput" class="sr-only">How much do you want to buy?</label>
-                            <input type="number" class="form-control" id="numberInput" placeholder="amount" style="width: 100px;">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2 ml-2">Buy</button>
-                    </form>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="stockInput" class="form-label">Stock</label>
+                        <input type="email" class="form-control" id="stockInput" placeholder="Stock">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <h2 style="text-align: center">Latest News:</h2>
-        <div class="container d-flex">
-            <div id="news" class="row border p-3 bg-light">
+            <div style="margin-top: 5%">
+                <div id="chart" style="width: 100%; height: 400px;"></div>
             </div>
         </div>
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <footer>
+            <div class="footer-area">
+                <p>© Copyright 2024 TradingTrainer - Team04.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                    <a href="https://x.com/home" target="_blank">Twitter</a>
+                    <a href="https://www.youtube.com/" target="_blank">Youtube</a>
+                </div>
+            </div>
 
-
+        </footer>
+        <!-- footer area end-->
     </div>
-    <!-- main content area end -->
-    <!-- footer area start-->
-    <footer>
-        <div class="footer-area">
-            <p>© Copyright 2024 TradingTrainer - Team04.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-                <a href="https://x.com/home" target="_blank">Twitter</a>
-                <a href="https://www.youtube.com/" target="_blank">Youtube</a>
-            </div>
-        </div>
-
-    </footer>
-    <!-- footer area end-->
 </div>
 <!-- main wrapper start -->
-
 <!-- jquery latest version -->
 <script src="../content/assets/js/vendor/jquery-2.2.4.min.js"></script>
 <!-- bootstrap 4 js -->
@@ -167,12 +124,6 @@
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<!-- start zingchart js -->
-<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-<script>
-    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-</script>
 <!-- others plugins -->
 <script src="assets/js/templateCode/plugins.js"></script>
 <script src="assets/js/templateCode/scripts.js"></script>

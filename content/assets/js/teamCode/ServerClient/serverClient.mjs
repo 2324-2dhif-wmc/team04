@@ -21,7 +21,7 @@ export async function getUser(email)
         let resp = await fetch(`${userUrl}?email=${email}`);
         let js = await resp.json();
         let data = js[0];
-        return new User(data.id, data.email, data.password, data.name, data.money, data.stocks);
+        return new User(data.id, data.name, data.email, data.password, data.money, data.stocks);
     } catch (error) {
         console.error('Error:', error);
     }

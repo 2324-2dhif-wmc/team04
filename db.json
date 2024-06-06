@@ -11,15 +11,27 @@
     {
       "id": "1234",
       "name": "test",
-      "email": "test",
-      "password": "test@gmail.com",
-      "money": 8615.340000000004,
+      "email": "test@gmail.com",
+      "password": "test",
+      "money": 5677.290000000004,
       "stocks": [
         {
           "symbol": "AAPL",
           "currentPrice": 196.19,
           "time": 1717613408,
           "amount": "200"
+        },
+        {
+          "symbol": "AAPL",
+          "currentPrice": 195.87,
+          "time": 1717617601,
+          "amount": "5"
+        },
+        {
+          "symbol": "AAPL",
+          "currentPrice": 195.87,
+          "time": 1717617601,
+          "amount": "10"
         }
       ]
     },
