@@ -1,7 +1,7 @@
-import {getRange, getTodayStock} from "../API/apidata.mjs";
+import {getYearsRange, getTodayStock} from "../API/apidata.mjs";
 
 if ($('#price').length) {
-    let range = await getRange(window.location.search.split("=")[1]);
+    let range = await getYearsRange(window.location.search.split("=")[1]);
 
     var chart = AmCharts.makeChart("price", {
         "type": "serial",
@@ -24,7 +24,7 @@ if ($('#price').length) {
             "bulletColor": "#FFFFFF",
             "hideBulletsCount": 50,
             "title": "red line",
-            "valueField": "visits",
+            "valueField": "data",
             "useLineColorForBulletBorder": true,
             "balloon": {
                 "drop": true

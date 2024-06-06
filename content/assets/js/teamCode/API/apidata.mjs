@@ -1,29 +1,60 @@
 import {getDateString, Stock} from "../model.mjs";
+import {getStockSym} from "../ServerClient/serverClient.mjs";
 
 const finnhubKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-const mpolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+const mapolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
 const jpolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+const mipolygonKey = "qeolYMNhlr3P4WFFLZjGYtS3Fc62Aygc";
 
 
-export async function getRange(symbol) {
+export async function getYearsRange(symbol) {
     try {
         let d = new Date();
         d.setMonth(d.getMonth() - 36);
         let to = getDateString(d);
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${mpolygonKey}`;
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${mapolygonKey}`;
 
         let resp = await fetch(url);
         let data = await resp.json();
 
         return data.results.map(d => ({
             date: new Date(d.t),
-            visits: d.c,
+            data: d.c,
         }));
     } catch (error) {
         console.log("Fehler beim Abrufen der Daten:", error);
     }
 }
+
+export async function getMonthRange(name) {
+    try {
+        let d = new Date();
+        d.setMonth(d.getMonth() - 1);
+        let to = getDateString(d);
+
+        let symbol = await getStockSym(name);
+        console.log(symbol);
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${to}/${getDateString(new Date())}?adjusted=true&sort=asc&apiKey=${mipolygonKey}`;
+
+        let resp = await fetch(url);
+        let data = await resp.json();
+
+        let stocks = [];
+        data.results.forEach(d => {
+            stocks.push({
+                date: new Date(d.t),
+                data: d.c
+            });
+        });
+        return stocks;
+
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+
 
 function formatTime(date) {
     let hours = date.getHours().toString().padStart(2, '0');
@@ -49,8 +80,6 @@ export async function getTodayStock(symbol) {
         for(let d of data.results)
         {
             let str = formatTime(new Date(d.t));
-            console.log(str);
-            console.log(new Date(d.t));
             let stock = d.c;
             strings.push(str);
             stocks.push(stock);

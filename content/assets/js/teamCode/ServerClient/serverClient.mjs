@@ -32,7 +32,28 @@ export async function getStockName(symbol)
     try {
         let resp = await fetch(`${stockUrl}?symbol=${symbol}`)
         let data = await resp.json();
+
+        if(!data) {
+            return null;
+        }
+
         return data[0].name;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function getStockSym(name)
+{
+    try {
+        let resp = await fetch(`${stockUrl}?name=${name}`)
+        let data = await resp.json();
+
+        if(!data) {
+            return null;
+        }
+
+        return data[0].symbol;
     } catch (error) {
         console.error('Error:', error);
     }
@@ -50,10 +71,23 @@ export async function buyStock(stock)
 
 export async function sellStock(stock)
 {
-    console.log(stock);
     let user = JSON.parse(localStorage.getItem('currentUser'));
     let oldStock = user.removeStock(stock.symbol);
     user.money += stock.currentPrice * oldStock.amount;
 
     updateUser(user);
+}
+
+export async function fetchStock(query = '') {
+    try {
+        let resp = await fetch(`${stockUrl}`);
+        let data = await resp.json();
+        let stock = data.filter(stock => stock.name.toLowerCase().startsWith(query.toLowerCase()));
+        if (stock) {
+            return stock[0].name;
+        }
+        return null;
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
