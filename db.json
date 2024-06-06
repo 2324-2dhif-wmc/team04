@@ -40,7 +40,7 @@
       "name": "Michael Oswald",
       "email": "oswaldmi2008@gmail.com",
       "password": "Hekjegyok9",
-      "money": 1055.8022000000014,
+      "money": 170.45220000000154,
       "stocks": [
         {
           "symbol": "HD",
@@ -71,6 +71,12 @@
           "currentPrice": 195.87,
           "time": 1717617601,
           "amount": "4"
+        },
+        {
+          "symbol": "GOOG",
+          "currentPrice": 177.07,
+          "time": 1717617601,
+          "amount": "5"
         }
       ]
     }
