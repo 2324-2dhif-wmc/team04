@@ -1,3 +1,5 @@
+import {getQuote} from "./API/apidata.mjs";
+
 export function getDateString(date)
 {
     let year = date.getFullYear();
@@ -40,9 +42,26 @@ export class User
         return false;
     }
 
-    removeStock(stock)
+    async removeStock(stock, amount)
     {
-        this.stocks = this.stocks.filter(s => s.symbol !== stock.symbol || s.currentPrice !== stock.currentPrice
-            || s.time !== stock.time || s.amount !== stock.amount);
+        if (amount < 0) amount = amount * -1;
+        let currentPrice = await getQuote(stock.symbol);
+
+        let idx = this.stocks.findIndex(s =>
+            s.symbol === stock.symbol ||
+            s.currentPrice === stock.currentPrice ||
+            s.time === stock.time ||
+            s.amount === stock.amount
+        );
+
+        if(this.stocks[idx].amount - amount) {
+            this.stocks[idx].amount -= amount;
+            this.money += currentPrice.currentPrice * amount;
+        }
+        else {
+            this.money += currentPrice.currentPrice * this.stocks[idx].amount;
+            this.stocks = this.stocks.filter(s => s.symbol !== stock.symbol || s.currentPrice !== stock.currentPrice
+                || s.time !== stock.time || s.amount !== stock.amount);
+        }
     }
 }
