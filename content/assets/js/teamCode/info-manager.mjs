@@ -35,10 +35,14 @@ document.getElementById("quote").innerText = info.currentPrice;
     document.getElementById('numberForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    info.amount = document.getElementById('numberInput').value;
+    info.amount = document.getElementById('stockInput').value;
 
     if(user.money - parseInt(info.amount) * info.currentPrice < 0) {
         alert("You do not have enough money");
+        return false;
+    }
+    if (info.amount <= 0){
+        alert("You do not have enough amount");
         return false;
     }
     await buyStock(info).then(() => alert("Stock bought!"));
