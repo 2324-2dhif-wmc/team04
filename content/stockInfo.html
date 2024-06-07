@@ -58,6 +58,11 @@
             width: 60%; /* Festgelegte Breite für das Eingabefeld */
             margin-right: 10px;
         }
+        .back{
+            position: fixed;
+            bottom: 3%;
+            left: 95%;
+        }
     </style>
 
 </head>
@@ -127,6 +132,7 @@
                         <button type="submit" class="btn btn-primary">Buy</button>
                     </form>
                     <button id="comparer" class="btn btn-primary" style="margin-right: 20%">Comparer</button>
+                    <button class="btn btn-primary back" onclick="window.history.back()">Back</button>
                 </div>
             </div>
         </div>
