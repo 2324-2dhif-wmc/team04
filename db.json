@@ -21,21 +21,8 @@
       "name": "Michael Oswald",
       "email": "oswaldmi2008@gmail.com",
       "password": "Hekjegyok9",
-      "money": 50000,
-      "stocks": [
-        {
-          "symbol": "HD",
-          "currentPrice": 329.5814,
-          "time": 1717602415,
-          "amount": "2"
-        },
-        {
-          "symbol": "AAPL",
-          "currentPrice": 196.005,
-          "time": 1717603193,
-          "amount": "3"
-        }
-      ]
+      "money": 51247.1778,
+      "stocks": []
     }
   ],
   "stocks": [

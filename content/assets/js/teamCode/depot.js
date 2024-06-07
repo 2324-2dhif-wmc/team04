@@ -5,6 +5,7 @@ async function handleButtonClick(id){
     let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
     let stock = user.stocks[id];
     await sellStock(stock);
+    location.reload();
 }
 
 function umleiten(symbol) {
