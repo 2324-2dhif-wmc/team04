@@ -8,10 +8,9 @@ export function getDateString(date)
 
 export class Stock
 {
-    constructor(symbol, name, currentPrice, timestamp, amount = 0)
+    constructor(symbol, currentPrice, timestamp, amount = 0)
     {
         this.symbol = symbol;
-        this.name = name;
         this.currentPrice = currentPrice;
         this.time = timestamp;
         this.amount = amount;
@@ -41,10 +40,9 @@ export class User
         return false;
     }
 
-    removeStock(symbol)
+    removeStock(stock)
     {
-        let rmStock = this.stocks.filter(s => s.symbol === symbol);
-        this.stocks = this.stocks.filter(s => s.symbol !== symbol);
-        return rmStock[0];
+        this.stocks = this.stocks.filter(s => s.symbol !== stock.symbol || s.currentPrice !== stock.currentPrice
+            || s.time !== stock.time || s.amount !== stock.amount);
     }
 }

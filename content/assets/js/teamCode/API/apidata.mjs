@@ -99,7 +99,7 @@ export async function getQuote(symbol) {
         throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
     const data = await response.json();
-    return new Stock(symbol, data.name, data.c, data.t);
+    return new Stock(symbol, data.c, data.t);
 }
 
 export async function getMarketStatus() {

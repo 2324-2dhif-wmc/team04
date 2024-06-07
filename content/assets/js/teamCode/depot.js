@@ -1,12 +1,10 @@
 import {getUser, sellStock} from "./ServerClient/serverClient.mjs";
 import { getQuote } from "./API/apidata.mjs";
 
-async function handleButtonClick(symbol){
-    let stock = await getQuote(symbol);
+async function handleButtonClick(id){
+    let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
+    let stock = user.stocks[id];
     await sellStock(stock);
-
-    deleteAllRows();
-    await buildTable();
 }
 
 function umleiten(symbol) {
@@ -34,6 +32,7 @@ async function buildTable() {
     let money = document.getElementById("wert");
     money.innerText = "Money: " + user.money.toFixed(2) + " USD";
 
+    let i = 0;
     for (let stock of user.stocks) {
         let symbol = stock.symbol;
         let val = stock.currentPrice;
@@ -57,9 +56,10 @@ async function buildTable() {
             <td style="padding-left: 3%"><img src="${imagePath}" alt="Impact"></td>
             <td>${winLose.toFixed(2)}</td>
             <td>
-                <button class="btn btn-primary" onclick="handleButtonClick('${symbol}')">Sell</button>
+                <button id='${i}' class="btn btn-primary" onclick='handleButtonClick(this.id)'>Sell</button>
             </td>
         `;
+        i += 1;
     }
 }
 
