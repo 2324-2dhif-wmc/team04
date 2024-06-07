@@ -13,13 +13,13 @@
       "name": "test",
       "email": "test@gmail.com",
       "password": "test",
-      "money": 48444.159999999996,
+      "money": 49422.950699999994,
       "stocks": [
         {
           "symbol": "AAPL",
           "currentPrice": 194.48,
           "time": 1717704001,
-          "amount": 8
+          "amount": 3
         }
       ]
     },

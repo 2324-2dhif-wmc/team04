@@ -54,11 +54,10 @@ export class User
             s.amount === stock.amount
         );
 
-        if(this.stocks[idx].amount - amount) {
+        if(this.stocks[idx].amount - amount < 0) {
             this.stocks[idx].amount -= amount;
             this.money += currentPrice.currentPrice * amount;
-        }
-        else {
+        } else {
             this.money += currentPrice.currentPrice * this.stocks[idx].amount;
             this.stocks = this.stocks.filter(s => s.symbol !== stock.symbol || s.currentPrice !== stock.currentPrice
                 || s.time !== stock.time || s.amount !== stock.amount);
