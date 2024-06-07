@@ -54,7 +54,7 @@ export class User
             s.amount === stock.amount
         );
 
-        if(this.stocks[idx].amount - amount < 0) {
+        if(this.stocks[idx].amount - amount > 0) {
             this.stocks[idx].amount -= amount;
             this.money += currentPrice.currentPrice * amount;
         } else {
