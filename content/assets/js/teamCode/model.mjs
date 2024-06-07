@@ -45,6 +45,6 @@ export class User
     {
         let rmStock = this.stocks.filter(s => s.symbol === symbol);
         this.stocks = this.stocks.filter(s => s.symbol !== symbol);
-        return rmStock;
+        return rmStock[0];
     }
 }

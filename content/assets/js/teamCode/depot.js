@@ -1,32 +1,40 @@
-import { sellStock } from "./ServerClient/serverClient.mjs";
+import {getUser, sellStock} from "./ServerClient/serverClient.mjs";
 import { getQuote } from "./API/apidata.mjs";
-import { User } from "./model.mjs";
 
-const table = document.getElementById("depotTable");
-let d = JSON.parse(localStorage.getItem('currentUser'));
-let user = new User(d.id, d.name, d.email, d.password, d.money, d.stocks);
-let stock;
+async function handleButtonClick(symbol){
+    let stock = await getQuote(symbol);
+    await sellStock(stock);
 
-function handleButtonClick(){
-    let stringifiedStock = JSON.stringify(stock);
-    sellStock(stringifiedStock);
+    deleteAllRows();
+    await buildTable();
 }
-
 
 function umleiten(symbol) {
     const basisUrl = "../content/stockInfo.html?symbol=";
     window.location.href = `${basisUrl}` + symbol;
 }
 
+function deleteAllRows(table) {
+    let t = document.getElementById("depotTable");
+    let rowCount = t.rows.length;
+
+    // Iterate from the end to the start to avoid index shifting issues
+    for (let i = rowCount - 1; i > 0; i--) {
+        t.deleteRow(-1);
+    }
+}
+
 window.umleiten = umleiten;
 window.handleButtonClick = handleButtonClick;
 
-
 async function buildTable() {
+    let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
+    let table = document.getElementById("depotTable");
+
     let money = document.getElementById("wert");
     money.innerText = "Money: " + user.money.toFixed(2) + " USD";
 
-    for (stock of user.stocks) {
+    for (let stock of user.stocks) {
         let symbol = stock.symbol;
         let val = stock.currentPrice;
 
@@ -49,10 +57,10 @@ async function buildTable() {
             <td style="padding-left: 3%"><img src="${imagePath}" alt="Impact"></td>
             <td>${winLose.toFixed(2)}</td>
             <td>
-                <button class="btn btn-primary" onclick="handleButtonClick()">Sell</button>
+                <button class="btn btn-primary" onclick="handleButtonClick('${symbol}')">Sell</button>
             </td>
         `;
     }
 }
 
-buildTable();
+await buildTable();

@@ -1,9 +1,6 @@
-import {getHoliday, getMarketNews, getMarketStatus} from "./API/apidata.mjs";
+import {getUser} from "./ServerClient/serverClient.mjs";
 
-
-let user = JSON.parse(localStorage.getItem('currentUser'));
+let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
 
 let x = document.getElementById("Account");
 x.innerHTML = user.name;
-
-localStorage.setItem('currentUser', JSON.stringify(user));

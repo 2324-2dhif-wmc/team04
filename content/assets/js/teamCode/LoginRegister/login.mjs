@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
         checkUser(userData);
 
         let user = await getUser(userData.email);
+        userData.name = user.name;
 
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('currentUser', JSON.stringify(userData));
     });
     
     function checkUser(data) {

@@ -62,21 +62,21 @@ export async function getStockSym(name)
 
 export async function buyStock(stock)
 {
-    let us = JSON.parse(localStorage.getItem('currentUser'));
-    let user = new User(us.id, us.name, us.email, us.password, us.money, us.stocks);
-    user.addStock(stock);
-    user.money -= stock.currentPrice * stock.amount;
+    let us = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
+    us.addStock(stock);
+    us.money -= stock.currentPrice * stock.amount;
 
-    updateUser(user);
+    updateUser(us);
 }
 
 export async function sellStock(stock)
 {
-    let user = JSON.parse(localStorage.getItem('currentUser'));
-    let current = new User(user.id, user.name, user.email, user.password, user.money, user.stocks);
-    let oldStock = current.removeStock(stock.symbol);
-    console.log(stock.currentPrice * oldStock.amount);
+    let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
+    let oldStock = user.removeStock(stock.symbol);
+
+    console.log(user.money);
     user.money += stock.currentPrice * oldStock.amount;
+    console.log(user.money);
 
     updateUser(user);
 }

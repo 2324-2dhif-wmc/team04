@@ -1,5 +1,5 @@
 import {getQuote, getStockNews} from "./API/apidata.mjs";
-import {buyStock} from "./ServerClient/serverClient.mjs";
+import {buyStock, getUser} from "./ServerClient/serverClient.mjs";
 
 let symbol = window.location.search.split("=")[1];
 
@@ -27,12 +27,11 @@ export async function buildInfo() {
 buildInfo();
 
 let info = await getQuote(symbol);
-let user = JSON.parse(localStorage.getItem("currentUser"));
+let user = await getUser(JSON.parse(localStorage.getItem("currentUser")).email);
 
 document.getElementById("quote").innerText = info.currentPrice;
 
-
-    document.getElementById('numberForm').addEventListener('submit', async function(event) {
+document.getElementById('numberForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     info.amount = document.getElementById('stockInput').value;

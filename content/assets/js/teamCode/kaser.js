@@ -1,12 +1,11 @@
 import {getHoliday, getMarketNews, getMarketStatus} from "./API/apidata.mjs";
 
 let status = await getMarketStatus();
-let holiday = await getHoliday();
-console.log(holiday);
 let hoday = "no Holiday";
 if (status.holiday !== null) {
     hoday = status.holiday;
 }
+
 let sesssion = status.session;
 if (status.session === null){
     sesssion = `no Market`

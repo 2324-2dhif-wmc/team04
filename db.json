@@ -13,33 +13,8 @@
       "name": "test",
       "email": "test@gmail.com",
       "password": "test",
-      "money": 50000,
-      "stocks": [
-        {
-          "symbol": "AAPL",
-          "currentPrice": 196.19,
-          "time": 1717613408,
-          "amount": "200"
-        },
-        {
-          "symbol": "AAPL",
-          "currentPrice": 195.87,
-          "time": 1717617601,
-          "amount": "5"
-        },
-        {
-          "symbol": "AAPL",
-          "currentPrice": 195.87,
-          "time": 1717617601,
-          "amount": "10"
-        },
-        {
-          "symbol": "MSFT",
-          "currentPrice": 400,
-          "time": 1717617601,
-          "amount": "6"
-        }
-      ]
+      "money": 49999.99999999999,
+      "stocks": []
     },
     {
       "id": "a5ba",
