@@ -5,7 +5,14 @@ async function handleButtonClick(id, amount){
     let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
     let stock = user.stocks[id];
     await sellStock(stock, amount);
-    //location.reload();
+    await delay(500);
+    let table = document.getElementById("depotTable");
+    deleteAllRows(table)
+    buildTable();
+}
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function umleiten(symbol) {
@@ -14,12 +21,8 @@ function umleiten(symbol) {
 }
 
 function deleteAllRows(table) {
-    let t = document.getElementById("depotTable");
-    let rowCount = t.rows.length;
-
-    // Iterate from the end to the start to avoid index shifting issues
-    for (let i = rowCount - 1; i > 0; i--) {
-        t.deleteRow(-1);
+    while (table.rows.length > 0) {
+        table.deleteRow(0);
     }
 }
 
@@ -29,6 +32,18 @@ window.handleButtonClick = handleButtonClick;
 async function buildTable() {
     let user = await getUser(JSON.parse(localStorage.getItem('currentUser')).email);
     let table = document.getElementById("depotTable");
+    let firstRow = table.insertRow(0);
+    firstRow.innerHTML= `
+        <tr class="heading-td">
+            <td class="mv-icon">Symbol</td>
+            <td class="coin-name">Amount</td>
+            <td class="buy">Purchase Value</td>
+            <td class="sell">Actual Value</td>
+            <td class="trends">Impact</td>
+            <td class="attachments">Win/Lose</td>
+            <td class="stats-chart"></td>
+        </tr>
+    `
 
     let money = document.getElementById("wert");
     money.innerText = "Money: " + user.money.toFixed(2) + " USD";
