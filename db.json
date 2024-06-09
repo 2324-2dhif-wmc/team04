@@ -13,8 +13,27 @@
       "name": "test",
       "email": "test@gmail.com",
       "password": "test",
-      "money": 53493.06209999999,
-      "stocks": []
+      "money": 47678.50000000001,
+      "stocks": [
+        {
+          "symbol": "AAPL",
+          "currentPrice": 196.89,
+          "time": 1717790401,
+          "amount": "5"
+        },
+        {
+          "symbol": "AMZN",
+          "currentPrice": 184.3,
+          "time": 1717790401,
+          "amount": "4"
+        },
+        {
+          "symbol": "JPM",
+          "currentPrice": 199.95,
+          "time": 1717790402,
+          "amount": "3"
+        }
+      ]
     },
     {
       "id": "a5ba",

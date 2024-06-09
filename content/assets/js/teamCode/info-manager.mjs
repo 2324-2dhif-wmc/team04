@@ -1,10 +1,11 @@
 import {getQuote, getStockNews} from "./API/apidata.mjs";
-import {buyStock, getUser} from "./ServerClient/serverClient.mjs";
+import {buyStock, getUser, getStockName} from "./ServerClient/serverClient.mjs";
 
 let symbol = window.location.search.split("=")[1];
 
 export async function buildInfo() {
-    document.getElementById("stock-symbol").textContent = symbol;
+    let name = await getStockName(symbol);
+    document.getElementById("stock-symbol").textContent = name;
 
     const news = await getStockNews(symbol);
     let newsContainer = document.getElementById("news");
