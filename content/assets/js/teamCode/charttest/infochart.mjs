@@ -66,50 +66,58 @@ if ($('#today').length) {
     let min = Math.min(...stocks) - 0.5;
     let max = Math.max(...stocks) + 0.5;
 
-    var myConfig = {
-        "type": "line",
+    if (str) {
+        let tod = document.getElementById('today');
+        tod.style.width = "100%";
+        tod.style.height = "400px";
 
-        "scale-x": { //X-Axis
-            "labels": str,
-            "label": {
-                "font-size": 14,
-                "offset-x": 0,
-            },
-            "item": { //Scale Items (scale values or labels)
-                "font-size": 10,
-            },
-            "guide": { //Guides
-                "visible": false,
-                "line-style": "solid", //"solid", "dotted", "dashed", "dashdot"
-                "alpha": 1
-            }
-        },
-        "scale-y": {
-            "min-value": min, // Mindestwert der Y-Achse
-            "max-value": max,
-            "zooming": true
-        },
-        "plot": { "aspect": "spline" },
-        "series": [{
-            "values": stocks,
-            "line-color": "#F0B41A",
-            /* "dotted" | "dashed" */
-            "line-width": 5 /* in pixels */ ,
-            "marker": { /* Marker object */
-                "background-color": "#D79D3B",
-                /* hexadecimal or RGB value */
-                "size": 5,
-                /* in pixels */
-                "border-color": "#D79D3B",
-                /* hexadecimal or RBG value */
-            }
-        }]
-    };
+        var myConfig = {
+            "type": "line",
 
-    zingchart.render({
-        id: 'today',
-        data: myConfig,
-        height: "100%",
-        width: "100%"
-    });
+            "scale-x": { //X-Axis
+                "labels": str,
+                "label": {
+                    "font-size": 14,
+                    "offset-x": 0,
+                },
+                "item": { //Scale Items (scale values or labels)
+                    "font-size": 10,
+                },
+                "guide": { //Guides
+                    "visible": false,
+                    "line-style": "solid", //"solid", "dotted", "dashed", "dashdot"
+                    "alpha": 1
+                }
+            },
+            "scale-y": {
+                "min-value": min, // Mindestwert der Y-Achse
+                "max-value": max,
+                "zooming": true
+            },
+            "plot": { "aspect": "spline" },
+            "series": [{
+                "values": stocks,
+                "line-color": "#F0B41A",
+                /* "dotted" | "dashed" */
+                "line-width": 5 /* in pixels */ ,
+                "marker": { /* Marker object */
+                    "background-color": "#D79D3B",
+                    /* hexadecimal or RGB value */
+                    "size": 5,
+                    /* in pixels */
+                    "border-color": "#D79D3B",
+                    /* hexadecimal or RBG value */
+                }
+            }]
+        };
+
+        zingchart.render({
+            id: 'today',
+            data: myConfig,
+            height: "100%",
+            width: "100%"
+        });
+    }
+
+
 }

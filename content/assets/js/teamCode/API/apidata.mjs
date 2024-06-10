@@ -64,12 +64,12 @@ function formatTime(date) {
 export async function getTodayStock(symbol) {
     try {
         let from = new Date();
-        from.setDate(from.getDate() - 1);
+        from.setDate(from.getDate() - 2);
         from = getDateString(from);
         let to = getDateString(new Date());
 
-        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${from}/${to}?adjusted=true&sort=asc&apiKey=${jpolygonKey}`;
-        //let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/30/minute/2024-06-05/2024-06-06?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+        //let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${from}/${to}?adjusted=true&sort=asc&apiKey=${jpolygonKey}`;
+        let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/30/minute/2024-06-06/2024-06-07?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
 
         let resp = await fetch(url);
         let data = await resp.json();
