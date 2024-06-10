@@ -69,7 +69,7 @@ export async function getTodayStock(symbol) {
         let to = getDateString(new Date());
 
         //let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/${from}/${to}?adjusted=true&sort=asc&apiKey=${jpolygonKey}`;
-        let url = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/30/minute/2024-06-06/2024-06-07?adjusted=true&sort=asc&apiKey=aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+        let url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/30/minute/2024-06-06/2024-06-07?adjusted=true&sort=asc&apiKey=${jpolygonKey}`;
 
         let resp = await fetch(url);
         let data = await resp.json();
