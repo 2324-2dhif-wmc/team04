@@ -2,7 +2,7 @@ import {getDateString, Stock} from "../model.mjs";
 import {getStockSym} from "../ServerClient/serverClient.mjs";
 
 const finnhubKey = "cnk1a91r01qvd1hlrv30cnk1a91r01qvd1hlrv3g";
-const mapolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
+const mapolygonKey = "hfWWLRN1okw1sX49EmIQ1ccVwaS1GbdF";
 const jpolygonKey = "aEMjzbpWJ5Z0qeGSofwG4_LDJoM9LN_5";
 const mipolygonKey = "qeolYMNhlr3P4WFFLZjGYtS3Fc62Aygc";
 
